@@ -1,0 +1,118 @@
+/* ==========================================================
+   CONTACT FORM
+========================================================== */
+
+.contact-form .ant-input,
+.contact-form .ant-input-affix-wrapper,
+.contact-form .ant-select,
+.contact-form .ant-input-textarea textarea{
+
+    min-height:45px !important;
+
+    border-radius:5px !important;
+
+    border:1px solid #E5E7EB !important;
+
+    background:#FAFAFA !important;
+
+    font-size:15px;
+
+    transition:.35s;
+
+    box-shadow:none !important;
+
+}
+
+.contact-form .ant-input-textarea textarea{
+
+    min-height:180px !important;
+
+    padding-top:18px;
+
+}
+
+.contact-form .ant-input::placeholder,
+.contact-form .ant-select::placeholder,
+.contact-form textarea::placeholder{
+
+    color:#B6BBC5;
+
+}
+
+.contact-form .ant-input:hover,
+.contact-form .ant-select:hover,
+.contact-form .ant-input-affix-wrapper:hover{
+
+    border-color:#C8A646 !important;
+
+}
+
+.contact-form .ant-input:focus,
+.contact-form .ant-input-focused,
+.contact-form .ant-select-focused .ant-select,
+.contact-form .ant-input-affix-wrapper-focused{
+
+    border-color:#C8A646 !important;
+
+    box-shadow:
+        0 0 0 5px rgba(200,166,70,.12) !important;
+
+    background:white !important;
+
+}
+
+.contact-form .ant-form-item-label label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#1E293B;
+
+}
+
+.contact-form .ant-checkbox-wrapper{
+
+    font-size:14px;
+
+}
+
+.contact-form .ant-btn{
+
+    height:60px;
+
+    border-radius:999px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+}
+
+.contact-form .ant-btn-primary{
+
+    background:linear-gradient(
+        135deg,
+        #0F3D5E,
+        #164B71
+    );
+
+    border:none;
+
+}
+
+.contact-form .ant-btn-primary:hover{
+
+    opacity:.95;
+
+}
+
+.contact-form .ant-select-placeholder{
+
+    display:flex;
+
+    align-items:center;
+
+    color:#B6BBC5;
+
+}

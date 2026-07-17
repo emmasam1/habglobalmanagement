@@ -8,14 +8,20 @@ import CTA from "@/components/cta/CTA";
 
 export default function Home() {
   return (
-    <div className="mt-10">
+    <>
       <Hero />
+
       <AboutPreview />
+
       <ServicesPreview />
+
       <WhyChoose />
+
       <Process />
+
       <Industries />
+
       <CTA />
-    </div>
+    </>
   );
 }

@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
 import ThemeRegistry from "@/components/providers/ThemeRegistry";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,11 +20,17 @@ export const metadata = {
   description: "Professional Management & Business Solutions",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({
+  children,
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable}`}>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <Navbar />
+          {children}
+           <Footer />
+          </ThemeRegistry>
       </body>
     </html>
   );
