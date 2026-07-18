@@ -30,7 +30,7 @@ export default function LeadershipSection() {
           className="mx-auto mt-20 max-w-3xl overflow-hidden rounded-[32px] border border-white/10"
         >
           <Image
-            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1400&q=80"
+            src="/founder.jpg"
             alt="Founder"
             width={1400}
             height={1800}
