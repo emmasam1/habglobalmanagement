@@ -119,7 +119,7 @@ export default function Footer() {
             HAB GLOBAL MANAGEMENT LTD
           </span>
 
-          <h2 className="mt-8 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+          <h2 className="mt-8 text-4xl font-bold leading-tight md:text-5xl lg:text-5xl">
             Building Stronger Businesses.
             <br />
             Creating Lasting Impact.

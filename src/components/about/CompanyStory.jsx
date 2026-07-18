@@ -31,6 +31,7 @@ export default function CompanyStory() {
             It is built through strategic thinking, disciplined execution and
             trusted partnerships that create measurable long-term value.
           </p>
+          
         </motion.div>
 
         {/* Image */}

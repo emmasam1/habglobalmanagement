@@ -3,7 +3,7 @@
 import SectionHeader from "../ui/SectionHeader";
 import ServiceCard from "./ServiceCard";
 
-import { services } from "@/data/services";
+import services from "@/data/services";
 
 export default function ServicesPreview() {
   return (

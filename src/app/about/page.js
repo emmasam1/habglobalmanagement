@@ -9,6 +9,7 @@ import WhyTrustUs from "@/components/about/WhyTrustUs";
 import Certifications from "@/components/about/Certifications";
 import OurPrinciples from "@/components/about/OurPrinciples";
 import Journey from "@/components/about/Journey";
+import AboutCTA from "@/components/about/AboutCTA";
 // import CTA from "@/components/cta/CTA";
 
 export default function AboutPage() {
@@ -19,6 +20,7 @@ export default function AboutPage() {
       <LeadershipQuote />
       <OurPrinciples />
       <Journey />
+      <AboutCTA />
       {/* <MissionVision />
       <CompanyStats />
       <TheHabWay />

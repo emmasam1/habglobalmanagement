@@ -2,9 +2,11 @@
 
 :root {
   color-scheme: light dark;
-}
 
-:root {
+  /* Fonts (Added definitions so your body/headings work) */
+  --font-sans: "Geist Sans", sans-serif;
+  --font-heading: "Geist Sans", sans-serif;
+
   /* Backgrounds */
   --background: #f8fafc;
   --foreground: #1f2937;
@@ -25,10 +27,10 @@
   --text-light: #ffffff;
 
   /* Status */
-  --success: #16a34a;
-  --warning: #f59e0b;
-  --error: #dc2626;
-  --info: #2563eb;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
 }
 
 @theme inline {
@@ -51,15 +53,9 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-light: var(--text-light);
 
-  /* Status */
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-  --color-info: var(--info);
-
   /* Fonts */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -84,18 +80,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: var(--font-sans); /* Fixed from --font-body */
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
@@ -104,7 +95,8 @@ html {
 }
 
 .btn-primary {
-  @apply bg-secondary text-primary rounded-full px-6 py-3 font-semibold transition-all duration-300 hover:scale-105;
+  /* Switched text color to an absolute near-black for perfect legibility on gold buttons */
+  @apply bg-secondary text-[#0f172a] rounded-full px-6 py-3 font-semibold transition-all duration-300 hover:scale-105;
 }
 
 .container {

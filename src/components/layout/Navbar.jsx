@@ -128,7 +128,7 @@ export default function Navbar() {
 
       <Drawer
         placement="left"
-        width={320}
+        size={320}
         open={open}
         closeIcon={false}
         onClose={() => setOpen(false)}
