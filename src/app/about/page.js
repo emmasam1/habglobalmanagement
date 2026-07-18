@@ -7,6 +7,8 @@ import LeadershipQuote from "@/components/about/LeadershipQuote";
 import TheHabWay from "@/components/about/TheHabWay";
 import WhyTrustUs from "@/components/about/WhyTrustUs";
 import Certifications from "@/components/about/Certifications";
+import OurPrinciples from "@/components/about/OurPrinciples";
+import Journey from "@/components/about/Journey";
 // import CTA from "@/components/cta/CTA";
 
 export default function AboutPage() {
@@ -14,13 +16,15 @@ export default function AboutPage() {
     <>
       <AboutHero />
       <CompanyStory />
-      <MissionVision />
+      <LeadershipQuote />
+      <OurPrinciples />
+      <Journey />
+      {/* <MissionVision />
       <CompanyStats />
       <TheHabWay />
-      <LeadershipQuote />
       <JourneyTimeline />
       <WhyTrustUs />
-      <Certifications />
+      <Certifications /> */}
 
       {/*  <MissionVision />
 

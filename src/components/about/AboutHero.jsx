@@ -1,123 +1,59 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import {
-  ArrowRight,
-  ChevronDown,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import Section from "@/components/layout/Section";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function AboutHero() {
   return (
-    <Section
-      className="relative min-h-screen overflow-hidden bg-background pt-40"
-      containerClass="flex items-center justify-center"
-    >
-      {/* Background Glow */}
+    <Section className="pt-36 lg:pt-44 pb-20">
 
-      <div className="absolute inset-0 overflow-hidden">
-
-        <div className="absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-secondary/10 blur-[140px]" />
-
-        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-primary/5 blur-[120px]" />
-
-      </div>
-
-      {/* Grid */}
-
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right,#000 1px,transparent 1px),linear-gradient(to bottom,#000 1px,transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      {/* Content */}
-
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
-
-        <motion.span
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: .5,
-          }}
-          className="inline-flex rounded-full border border-secondary/20 bg-secondary/10 px-5 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-secondary"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: .8 }}
+        className="mx-auto max-w-5xl text-center"
+      >
+        <motion.p
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: .6 }}
+          className="mb-5 uppercase tracking-[0.35em] text-xs font-semibold text-secondary"
         >
           About HAB Global
-        </motion.span>
+        </motion.p>
 
         <motion.h1
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: .2,
-            duration: .6,
-          }}
-          className="mt-8 text-5xl font-black leading-tight text-text-primary md:text-7xl"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: .1, duration: .6 }}
+          className="mx-auto max-w-4xl text-[38px] font-black leading-[1.05] text-text-primary md:text-[52px] lg:text-[64px]"
         >
-          Building Better Businesses.
+          Building Better
           <br />
-
-          Creating
-          <span className="text-secondary">
-            {" "}
-            Lasting Impact.
-          </span>
+          Businesses.
         </motion.h1>
 
         <motion.p
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: .4,
-            duration: .6,
-          }}
-          className="mx-auto mt-8 max-w-2xl text-lg leading-9 text-text-secondary"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: .2, duration: .6 }}
+          className="mx-auto mt-8 max-w-2xl text-base leading-8 text-text-secondary md:text-lg"
         >
-          At HAB Global Management Ltd, we help organisations,
-          entrepreneurs and investors navigate complexity,
-          unlock opportunities and build sustainable success
-          through strategic consulting and practical business
-          solutions.
+          HAB Global Management Ltd partners with organisations to solve
+          complex business challenges through strategic thinking,
+          operational excellence and long-term partnerships.
         </motion.p>
 
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            delay: .6,
-          }}
-          className="mt-12 flex flex-wrap justify-center gap-5"
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: .3, duration: .6 }}
+          className="mt-10"
         >
           <PrimaryButton
             href="/services"
@@ -125,34 +61,70 @@ export default function AboutHero() {
           >
             Explore Services
           </PrimaryButton>
-
-          <Link
-            href="/contact"
-            className="rounded-full border border-border px-8 py-4 font-semibold transition hover:border-secondary hover:text-secondary"
-          >
-            Contact Us
-          </Link>
-
         </motion.div>
-
-      </div>
-
-      {/* Scroll Indicator */}
+      </motion.div>
 
       <motion.div
-        animate={{
-          y: [0, 12, 0],
+        initial={{
+          opacity: 0,
+          scale: 1.05,
+        }}
+        whileInView={{
+          opacity: 1,
+          scale: 1,
+        }}
+        viewport={{
+          once: true,
         }}
         transition={{
-          duration: 1.8,
-          repeat: Infinity,
+          duration: .8,
         }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="relative mx-auto mt-20 max-w-7xl"
       >
-        <ChevronDown
-          size={34}
-          className="text-secondary"
-        />
+        <div className="relative overflow-hidden rounded-2xl">
+
+          <Image
+            src="/ceo.jpg"
+            alt="Executive Meeting"
+            width={1800}
+            height={1000}
+            priority
+            className="h-[280px] w-full object-cover md:h-[500px] lg:h-[650px]"
+          />
+
+        </div>
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: .25,
+          }}
+          viewport={{
+            once: true,
+          }}
+          className="absolute -bottom-8 left-6 rounded-2xl border border-white/20 bg-[#020617] px-7 py-6 shadow-xl backdrop-blur-xl lg:left-10"
+        >
+          <p className="text-xs uppercase tracking-[0.3em] text-secondary">
+            United Kingdom
+          </p>
+
+          <h3 className="mt-3 text-lg font-bold text-text-primary">
+            Registered Company
+          </h3>
+
+          <div className="mt-5 space-y-2 text-sm text-text-secondary">
+            <p>Business Strategy</p>
+            <p>Corporate Advisory</p>
+            <p>International Perspective</p>
+          </div>
+        </motion.div>
       </motion.div>
 
     </Section>

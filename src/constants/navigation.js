@@ -11,10 +11,10 @@ export const navigation = [
     label: "Services",
     href: "/services",
   },
-  {
-    label: "Industries",
-    href: "/industries",
-  },
+  // {
+  //   label: "Industries",
+  //   href: "/industries",
+  // },
   {
     label: "Contact",
     href: "/contact",

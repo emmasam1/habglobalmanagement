@@ -2,197 +2,209 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import {
-  Award,
-  BriefcaseBusiness,
-  Building2,
-} from "lucide-react";
-
+import BackgroundGlow from "@/components/ui/BackgroundGlow";
+import PremiumSectionHeading from "@/components/ui/PremiumSectionHeading";
 import Section from "@/components/layout/Section";
-import SectionHeading from "@/components/ui/SectionHeading";
 
-const stats = [
-  {
-    icon: <Award size={20} />,
-    value: "15+",
-    label: "Years Experience",
-  },
-  {
-    icon: <BriefcaseBusiness size={20} />,
-    value: "250+",
-    label: "Projects Led",
-  },
-  {
-    icon: <Building2 size={20} />,
-    value: "20+",
-    label: "Industries Served",
-  },
-];
-
-export default function LeadershipQuote() {
+export default function LeadershipSection() {
   return (
-    <Section className="relative overflow-hidden">
+    <Section className="relative overflow-hidden bg-neutral-950 py-28 lg:py-36">
+      <BackgroundGlow />
 
-      {/* Background */}
+      {/* Accent Line */}
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
 
-      <div className="absolute inset-0">
-
-        <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-secondary/10 blur-[180px]" />
-
-      </div>
-
-      <div className="relative">
-
-        <SectionHeading
-          center
-          badge="Leadership"
-          title="Meet Our Founder"
-          subtitle="The vision behind HAB Global Management Ltd."
+      <div className="relative z-10 mx-auto max-w-5xl">
+        <PremiumSectionHeading
+          centered
+          label="Leadership"
+          title="Leadership Built on Vision, Integrity and Action."
+          description="Every successful organisation deserves a trusted partner who understands its ambitions, challenges and opportunities."
         />
 
-        <div className="mt-20 grid items-center gap-16 lg:grid-cols-2">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mx-auto mt-20 max-w-3xl overflow-hidden rounded-[32px] border border-white/10"
+        >
+          <Image
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1400&q=80"
+            alt="Founder"
+            width={1400}
+            height={1800}
+            className="h-[600px] w-full object-cover grayscale transition duration-700 hover:scale-105"
+          />
+        </motion.div>
 
-          {/* Photo */}
+        <motion.blockquote
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mx-auto mt-16 max-w-3xl text-center"
+        >
+          <p className="text-3xl font-black leading-tight text-white md:text-5xl">
+            “Businesses grow when strategy becomes action.”
+          </p>
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -40,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="relative"
-          >
+          <div className="mx-auto mt-8 h-px w-20 bg-secondary" />
 
-            <div className="absolute -left-8 -top-8 h-40 w-40 rounded-full bg-secondary/20 blur-3xl" />
+          <p className="mt-8 text-lg leading-8 text-white/70">
+            Leadership is not simply about providing advice.
+            It is about creating clarity, inspiring confidence,
+            and helping organisations make decisions that
+            generate measurable long-term value.
+          </p>
+                    <div className="mt-12 flex justify-center">
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+          </div>
 
-            <div className="relative overflow-hidden rounded-[40px] border border-border bg-background shadow-2xl">
+          <div className="mt-10">
+            <h4 className="text-xl font-bold text-white">
+              HAB Global Management Ltd
+            </h4>
 
-              <Image
-                src="/founder.jpg"
-                alt="Founder"
-                width={700}
-                height={900}
-                className="h-[620px] w-full object-cover"
-              />
-
-            </div>
-
-          </motion.div>
-
-          {/* Content */}
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 40,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-          >
-
-            <span className="text-secondary font-semibold uppercase tracking-[0.25em]">
+            <p className="mt-2 text-secondary">
               Founder & Managing Director
-            </span>
+            </p>
+          </div>
+        </motion.blockquote>
 
-            <h2 className="mt-4 text-5xl font-black text-text-primary">
+        {/* Leadership Values */}
 
-              Your Name Here
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            delay: 0.3,
+            duration: 0.6,
+          }}
+          className="mt-24 grid gap-6 md:grid-cols-3"
+        >
+          {/* Vision */}
 
-            </h2>
+          <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm transition duration-500 hover:-translate-y-2 hover:border-secondary/40">
+            <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
 
-            <blockquote className="mt-8 border-l-4 border-secondary pl-6 text-2xl italic leading-relaxed text-text-primary">
+            <div className="relative">
+              <span className="text-5xl font-black text-secondary/30">
+                01
+              </span>
 
-              "We believe every business has the potential to
-              achieve extraordinary growth when strategy,
-              innovation and execution work together."
-
-            </blockquote>
-
-            <div className="mt-8 space-y-6 text-lg leading-9 text-text-secondary">
-
-              <p>
-                As Founder and Managing Director of HAB Global
-                Management Ltd, I am passionate about helping
-                businesses build sustainable growth through
-                practical consulting, strategic planning and
-                operational excellence.
-              </p>
-
-              <p>
-                Every organisation is unique, which is why we
-                believe in creating tailored solutions rather
-                than offering one-size-fits-all advice.
-              </p>
-
-            </div>
-
-            {/* Signature */}
-
-            <div className="mt-10">
-
-              <p className="font-serif text-4xl text-secondary">
-
-                Your Signature
-
-              </p>
-
-            </div>
-
-          </motion.div>
-
-        </div>
-
-        {/* Statistics */}
-
-        <div className="mt-20 grid gap-6 md:grid-cols-3">
-
-          {stats.map((item) => (
-
-            <motion.div
-              key={item.label}
-              whileHover={{
-                y: -8,
-              }}
-              className="rounded-3xl border border-border bg-background p-8 shadow-lg"
-            >
-
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary/10 text-secondary">
-
-                {item.icon}
-
-              </div>
-
-              <h3 className="mt-6 text-4xl font-black text-text-primary">
-
-                {item.value}
-
+              <h3 className="mt-6 text-2xl font-bold text-white">
+                Vision
               </h3>
 
-              <p className="mt-2 text-text-secondary">
-
-                {item.label}
-
+              <p className="mt-4 leading-8 text-white/70">
+                We help organisations see beyond today's
+                challenges by creating practical strategies
+                that position them for sustainable growth.
               </p>
+            </div>
+          </div>
 
-            </motion.div>
+          {/* Integrity */}
 
-          ))}
+          <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm transition duration-500 hover:-translate-y-2 hover:border-secondary/40">
+            <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
 
-        </div>
+            <div className="relative">
+              <span className="text-5xl font-black text-secondary/30">
+                02
+              </span>
 
+              <h3 className="mt-6 text-2xl font-bold text-white">
+                Integrity
+              </h3>
+
+              <p className="mt-4 leading-8 text-white/70">
+                Every recommendation is guided by honesty,
+                transparency and an unwavering commitment to
+                our clients' long-term success.
+              </p>
+            </div>
+          </div>
+
+          {/* Excellence */}
+
+          <div className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm transition duration-500 hover:-translate-y-2 hover:border-secondary/40">
+            <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+
+            <div className="relative">
+              <span className="text-5xl font-black text-secondary/30">
+                03
+              </span>
+
+              <h3 className="mt-6 text-2xl font-bold text-white">
+                Excellence
+              </h3>
+
+              <p className="mt-4 leading-8 text-white/70">
+                We believe exceptional outcomes come from
+                disciplined execution, continuous improvement
+                and attention to every detail.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+                {/* Bottom Decoration */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            delay: 0.5,
+            duration: 0.6,
+          }}
+          className="mt-24 flex justify-center"
+        >
+          <div className="flex items-center gap-4">
+            <div className="h-px w-20 bg-gradient-to-r from-transparent to-secondary" />
+
+            <div className="flex h-3 w-3 rounded-full bg-secondary" />
+
+            <div className="h-px w-20 bg-gradient-to-l from-transparent to-secondary" />
+          </div>
+        </motion.div>
+
+        {/* Closing Statement */}
+
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            delay: 0.6,
+            duration: 0.6,
+          }}
+          className="mx-auto mt-10 max-w-3xl text-center text-lg leading-8 text-white/60"
+        >
+          Our leadership philosophy is built on trust,
+          collaboration and practical execution—helping every
+          client move forward with confidence in an increasingly
+          competitive global business environment.
+        </motion.p>
       </div>
-
     </Section>
   );
 }
