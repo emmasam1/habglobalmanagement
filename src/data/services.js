@@ -20,7 +20,7 @@ const services = [
     icon: "BriefcaseBusiness",
 
     heroImage:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80",
+      "/Business_Solutions.jpg",
 
     accent: {
       bg: "bg-secondary/10",
@@ -123,7 +123,7 @@ const services = [
     icon: "ClipboardList",
 
     heroImage:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80",
+      "/Administrative_Services.jpg",
 
     accent: {
       bg: "bg-blue-500/10",
@@ -207,7 +207,7 @@ const services = [
     icon: "Settings2",
 
     heroImage:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1800&q=80",
+      "/perational_Improvement.jpg",
 
     accent: {
       bg: "bg-emerald-500/10",
@@ -289,7 +289,7 @@ const services = [
     icon: "ShieldCheck",
 
     heroImage:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1800&q=80",
+      "/Compliance_Support.jpg",
 
     accent: {
       bg: "bg-violet-500/10",
@@ -370,7 +370,7 @@ const services = [
     icon: "HeartPulse",
 
     heroImage:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1800&q=80",
+      "/Healthcare_Advisory_Support.jpg",
 
     accent: {
       bg: "bg-red-500/10",
