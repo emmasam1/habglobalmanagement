@@ -2,81 +2,84 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Phone,
-  Mail,
-} from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Phone } from "lucide-react";
 
-import AnimatedArrow from "../ui/AnimatedArrow";
+import Section from "@/components/layout/Section";
+import BackgroundGlow from "@/components/ui/BackgroundGlow";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function ContactHero() {
   return (
-    <section className="relative overflow-hidden pt-20 pb-24">
+    <Section className="relative overflow-hidden pt-36 pb-24 lg:pt-44 lg:pb-32">
 
-      {/* Background */}
+      <BackgroundGlow />
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,.12),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(34,197,94,.10),transparent_35%)]" />
+      <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
 
-      <div className="container relative">
+      <div className="relative z-10 grid items-center gap-16 lg:grid-cols-2">
+
+        {/* LEFT */}
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: .7 }}
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-4xl text-center"
         >
 
-          {/* <span className="inline-flex rounded-full bg-secondary/10 px-5 py-2 text-sm font-semibold uppercase tracking-[.25em] text-secondary">
+          <span className="inline-flex rounded-full bg-secondary/10 px-5 py-2 text-sm font-semibold uppercase tracking-widest text-secondary">
+            Contact HAB Global
+          </span>
 
-            Contact Us
-
-          </span> */}
-
-          <h1 className="mt-8 text-5xl font-bold leading-tight md:text-6xl">
-
-            Let's Build Something
-
-            <br />
-
-            Exceptional Together
-
+          <h1 className="mt-8 text-5xl font-black leading-tight text-text-primary lg:text-7xl">
+            Let's Start The Conversation.
           </h1>
 
-          <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-text-secondary">
-
-            Whether you're looking for strategic consultancy,
-            business management, healthcare support or SME
-            solutions, our team is ready to help.
-
+          <p className="mt-8 max-w-2xl text-lg leading-9 text-text-secondary">
+            Whether you're seeking strategic consulting, operational support,
+            compliance guidance or healthcare advisory services, we're ready
+            to understand your goals and explore the best way forward.
           </p>
 
-          <div className="mt-12 flex flex-wrap justify-center gap-5">
+          <div className="mt-12 flex flex-col gap-5 sm:flex-row">
 
-            <Link href="#contact-form">
+            <PrimaryButton
+              href="#contact-form"
+              icon={<ArrowRight size={18} />}
+            >
+              Send A Message
+            </PrimaryButton>
 
-              <button className="group flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-semibold text-white transition hover:opacity-90">
+            <Link
+              href="tel:+234000000000"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-border px-8 py-4 font-semibold transition hover:border-secondary hover:text-secondary"
+            >
+              <Phone size={18} />
 
-                Get In Touch
-
-                <AnimatedArrow />
-
-              </button>
-
+              Call Us
             </Link>
 
-            <Link href="tel:+440000000000">
+          </div>
 
-              <button className="flex items-center gap-3 rounded-full border border-border px-8 py-4 font-semibold transition hover:border-secondary hover:text-secondary">
+        </motion.div>
 
-                <Phone size={18} />
+        {/* RIGHT */}
 
-                Call Us
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
 
-              </button>
+          <div className="overflow-hidden rounded-[40px]">
 
-            </Link>
+            <Image
+              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80"
+              alt="Business Meeting"
+              width={700}
+              height={850}
+              className="h-full w-full object-cover"
+            />
 
           </div>
 
@@ -84,6 +87,6 @@ export default function ContactHero() {
 
       </div>
 
-    </section>
+    </Section>
   );
 }

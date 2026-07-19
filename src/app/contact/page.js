@@ -1,36 +1,27 @@
-"use client"
-
-import dynamic from "next/dynamic";
-
 import ContactHero from "@/components/contact/ContactHero";
-import ContactTeam from "@/components/contact/ContactTeam";
+import ContactCards from "@/components/contact/ContactCards";
 import ContactForm from "@/components/contact/ContactForm";
-// import ContactMap from "@/components/contact/ContactMap";
+import WhyContactHab from "@/components/contact/WhyContactHab";
 import ContactFAQ from "@/components/contact/ContactFAQ";
-import CTA from "@/components/cta/CTA";
-
-
-const ContactMap = dynamic(
-  () => import("@/components/contact/ContactMap"),
-  {
-    ssr: false,
-  }
-);
+import OfficeLocation from "@/components/contact/OfficeLocation";
+import ContactCTA from "@/components/contact/ContactCTA";
 
 export default function ContactPage() {
   return (
-    <div className="mt-10">
+    <>
       <ContactHero />
 
-      <ContactTeam />
+      <ContactCards />
 
       <ContactForm />
 
-      <ContactMap />
+      <WhyContactHab />
 
-      {/* <ContactFAQ />
+      <ContactFAQ />
 
-      <CTA /> */}
-    </div>
+      <OfficeLocation />
+
+      <ContactCTA />
+    </>
   );
 }

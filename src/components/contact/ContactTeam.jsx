@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import SectionHeader from "../ui/SectionHeader";
-import ContactPersonCard from "./ContactPersonCard";
+import ContactPersonCard from "./ContactCards";
 
 const contacts = [
   {

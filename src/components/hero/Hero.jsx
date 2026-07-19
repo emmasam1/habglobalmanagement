@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden pt-10"
     >
         <HeroBackground />
         

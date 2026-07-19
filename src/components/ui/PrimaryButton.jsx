@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import clsx from "clsx";
 import { motion } from "motion/react";
 
 export default function PrimaryButton({
   children,
   icon,
+  href,
+  onClick,
   variant = "primary",
   size = "md",
   className,
@@ -24,30 +27,43 @@ export default function PrimaryButton({
 
   const sizes = {
     sm: "px-5 py-2.5 text-sm",
-
     md: "px-6 py-3",
-
     lg: "px-8 py-4 text-lg",
   };
 
+  const classes = clsx(
+    "group inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",
+    variants[variant],
+    sizes[size],
+    className
+  );
+
+  // If href exists, render a Link
+  if (href) {
+    return (
+      <Link href={href} className={classes} {...props}>
+        <motion.span
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.96 }}
+          className="inline-flex items-center gap-2"
+        >
+          {children}
+          {icon}
+        </motion.span>
+      </Link>
+    );
+  }
+
+  // Otherwise render a button
   return (
     <motion.button
-      whileHover={{
-        scale: 1.05,
-      }}
-      whileTap={{
-        scale: 0.96,
-      }}
-      className={clsx(
-        "group inline-flex items-center gap-2 rounded-full font-semibold transition-all duration-300",
-        variants[variant],
-        sizes[size],
-        className
-      )}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.96 }}
+      onClick={onClick}
+      className={classes}
       {...props}
     >
       {children}
-
       {icon}
     </motion.button>
   );
