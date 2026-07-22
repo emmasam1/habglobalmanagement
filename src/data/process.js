@@ -36,7 +36,7 @@ export const process = [
     icon: BriefcaseBusiness,
     title: "Execution",
     description:
-      "We transform strategy into action by implementing solutions with precision, transparency and continuous collaboration throughout the project lifecycle.",
+      "We convert strategy into action with clarity, openness and continuous participation throughout every project lifecycle.",
 
     image:
       "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",

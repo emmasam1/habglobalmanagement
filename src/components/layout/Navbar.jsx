@@ -45,8 +45,7 @@ export default function Navbar() {
           {/* Logo */}
 
           <Link href="/" className="flex items-center gap-3">
-          <img src="/hab_logo_2.png" alt="logo" className="w-50"/>
-         
+            <img src="/hab_logo_2.png" alt="logo" className="w-50" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -91,35 +90,32 @@ export default function Navbar() {
           {/* Desktop CTA */}
 
           <div className="hidden lg:block">
-            <PrimaryButton
-              icon={
-                <motion.span
-                  animate={{
-                    x: [0, 8, 0],
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <ArrowRight size={18} />
-                </motion.span>
-              }
-            >
-              Get A Quote
-            </PrimaryButton>
+            <Link href={`/contact?#contact-form`}>
+              <PrimaryButton
+                icon={
+                  <motion.span
+                    animate={{
+                      x: [0, 8, 0],
+                    }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <ArrowRight size={18} />
+                  </motion.span>
+                }
+              >
+                Get A Quote
+              </PrimaryButton>
+            </Link>
           </div>
 
           {/* Mobile */}
 
           <div className="lg:hidden">
-            <Hamburger
-              toggled={open}
-              toggle={setOpen}
-              rounded
-              size={24}
-            />
+            <Hamburger toggled={open} toggle={setOpen} rounded size={24} />
           </div>
         </div>
       </motion.header>
@@ -142,13 +138,9 @@ export default function Navbar() {
           {/* Header */}
 
           <div className="border-b border-border px-6 py-5">
-            <h2 className="text-xl font-bold text-text-primary">
-              HAB GLOBAL
-            </h2>
+            <h2 className="text-xl font-bold text-text-primary">HAB GLOBAL</h2>
 
-            <p className="text-text-secondary">
-              Management Ltd
-            </p>
+            <p className="text-text-secondary">Management Ltd</p>
           </div>
 
           {/* Mobile Links */}

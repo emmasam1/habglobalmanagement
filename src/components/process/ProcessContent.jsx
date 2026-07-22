@@ -106,6 +106,7 @@ export default function ProcessContent({ step }) {
             className="inline-block"
           >
             <PrimaryButton
+            href="/contact"
               className="mt-10"
               icon={<AnimatedArrow />}
             >

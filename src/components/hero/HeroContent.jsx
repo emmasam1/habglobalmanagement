@@ -1,6 +1,7 @@
 "use client";
 
 import { Sparkles } from "lucide-react";
+import Link from "next/link";
 
 import AnimatedText from "../ui/AnimatedText";
 import AnimatedSection from "../ui/AnimatedSection";
@@ -10,22 +11,14 @@ import PrimaryButton from "../ui/PrimaryButton";
 export default function HeroContent() {
   return (
     <div>
-
       <AnimatedSection delay={0}>
-
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-secondary/20 bg-secondary/10 px-5 py-2">
-
-          <Sparkles
-            size={16}
-            className="text-secondary"
-          />
+          <Sparkles size={16} className="text-secondary" />
 
           <span className="text-sm font-semibold uppercase tracking-[0.25em] text-secondary">
             Trusted Business Solutions
           </span>
-
         </div>
-
       </AnimatedSection>
 
       <AnimatedText
@@ -35,34 +28,44 @@ export default function HeroContent() {
         Empowering Businesses Through Strategic Management Excellence.
       </AnimatedText>
 
-      <AnimatedSection
-        delay={0.4}
-        className="mt-8 max-w-xl"
-      >
+      <AnimatedSection delay={0.4} className="mt-8 max-w-xl">
         <p className="text-lg leading-8 text-text-secondary">
-          HAB GLOBAL MANAGEMENT LTD partners with
-          organisations to deliver professional
-          consultancy, strategic planning and business
-          solutions that create lasting success.
+          HAB GLOBAL MANAGEMENT LTD delivers professional consultancy, strategic
+          planning, and business solutions designed to create lasting success,
+          achieve sustainable growth and measurable result.
         </p>
       </AnimatedSection>
 
-      <AnimatedSection
-        delay={0.6}
-        className="mt-10 flex flex-wrap gap-4"
-      >
+      <AnimatedSection delay={0.4} className="mt-8 max-w-xl">
+        <p className="font-bold text-secondary leading-8">Your Vision. Our Expertise. Real Impact.</p>
+      </AnimatedSection>
+
+      <AnimatedSection delay={0.6} className="mt-10 flex flex-wrap gap-4">
         <PrimaryButton
           icon={<AnimatedArrow />}
+          href="/contact#contact-form"
+          //   icon={
+          //     <motion.span
+          //       animate={{
+          //         x: [0, 8, 0],
+          //       }}
+          //       transition={{
+          //         duration: 1,
+          //         repeat: Infinity,
+          //         ease: "easeInOut",
+          //       }}
+          //     >
+          //       <ArrowRight size={18} />
+          //     </motion.span>
+          //   }
         >
           Get A Quote
         </PrimaryButton>
 
-        <PrimaryButton variant="outline">
+        <PrimaryButton variant="outline" href="/services">
           Explore Services
         </PrimaryButton>
-
       </AnimatedSection>
-
     </div>
   );
 }
