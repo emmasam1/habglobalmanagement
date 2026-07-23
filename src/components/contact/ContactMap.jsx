@@ -17,7 +17,8 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
-const position = [51.5074, -0.1278]; // London
+// Latitude and Longitude for Sovereign Centre, Weston-super-Mare
+const position = [51.3486, -2.9774];
 
 const icon = new L.DivIcon({
   html: `
@@ -71,12 +72,12 @@ export default function ContactMap() {
           >
             <MapContainer
               center={position}
-              zoom={13}
+              zoom={16}
               scrollWheelZoom={false}
               className="h-full w-full min-h-[420px]"
             >
               <TileLayer
-                attribution='&copy; OpenStreetMap contributors'
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <Marker position={position} icon={icon} />
@@ -103,7 +104,7 @@ export default function ContactMap() {
                 <InfoRow
                   icon={<MapPin size={18} />}
                   title="Office Address"
-                  text="London, United Kingdom"
+                  text="Unit 24–25, The Sovereign Centre High Street Weston-super-Mare BS23 1HL"
                 />
                 <InfoRow
                   icon={<Phone size={18} />}
@@ -125,8 +126,9 @@ export default function ContactMap() {
 
             <div className="mt-8 pt-2">
               <Link
-                href="https://maps.google.com"
+                href="https://www.google.com/maps/search/?api=1&query=Unit+24-25+The+Sovereign+Centre+High+Street+Weston-super-Mare+BS23+1HL"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-md transition-transform duration-200 hover:-translate-y-0.5"
               >
                 Get Directions

@@ -19,6 +19,8 @@ const services = [
 
     icon: "BriefcaseBusiness",
 
+    price:5000,
+
     heroImage:
       "/Business_Solutions.jpg",
 
@@ -122,6 +124,8 @@ const services = [
 
     icon: "ClipboardList",
 
+    price:5000,
+
     heroImage:
       "/Administrative_Services.jpg",
 
@@ -206,6 +210,8 @@ const services = [
 
     icon: "Settings2",
 
+    price:5000,
+
     heroImage:
       "/perational_Improvement.jpg",
 
@@ -288,6 +294,8 @@ const services = [
 
     icon: "ShieldCheck",
 
+    price:5000,
+
     heroImage:
       "/Compliance_Support.jpg",
 
@@ -368,6 +376,8 @@ const services = [
     badge: "Healthcare",
 
     icon: "HeartPulse",
+
+    price:5000,
 
     heroImage:
       "/Healthcare_Advisory_Support.jpg",

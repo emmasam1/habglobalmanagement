@@ -196,7 +196,10 @@ export default function Footer() {
 
             <ContactItem
               icon={<MapPin size={18} />}
-              text="London, United Kingdom"
+              text="Unit 24–25, The Sovereign Centre
+High Street
+Weston-super-Mare
+BS23 1HL"
             />
           </div>
 

@@ -6,6 +6,9 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+import axios from "axios";
+import { stripePromise } from "@/lib/stripe";
+
 import Section from "@/components/layout/Section";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import services from "@/data/services";
@@ -29,6 +32,28 @@ export default function StepFour({
     next();
 
   }
+
+  const handlePayment = async () => {
+  try {
+    const stripe = await stripePromise;
+
+    const response = await axios.post(
+      "/api/stripe/checkout",
+      {
+        title: data.serviceTitle,
+        service: data.service,
+        customer: data.name,
+        price: data.price,
+      }
+    );
+
+    await stripe.redirectToCheckout({
+      sessionId: response.data.id,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
   return (
 
@@ -187,11 +212,11 @@ export default function StepFour({
             </PrimaryButton>
 
             <PrimaryButton
-              onClick={handleSubmit}
+              onClick={handlePayment}
               icon={<Send size={18} />}
             >
 
-              Submit Consultation Request
+              Pay Now
 
             </PrimaryButton>
 

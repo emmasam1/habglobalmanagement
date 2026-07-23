@@ -65,9 +65,13 @@ export default function OfficeLocation() {
                 </h3>
 
                 <p className="mt-3 leading-8 text-text-secondary">
-                  London, United Kingdom
+                  Unit 24–25, The Sovereign Centre
                   <br />
-                  Meetings available by appointment.
+                  High Street, Weston-super-Mare
+                  <br />
+                  BS23 1HL, United Kingdom
+                  <br />
+                  <span className="text-sm opacity-80">Meetings available by appointment.</span>
                 </p>
 
               </div>
@@ -105,8 +109,9 @@ export default function OfficeLocation() {
             {/* CTA */}
 
             <Link
-              href="https://maps.google.com"
+              href="https://www.google.com/maps/search/?api=1&query=Unit+24-25+The+Sovereign+Centre+High+Street+Weston-super-Mare+BS23+1HL"
               target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full bg-secondary px-8 py-4 font-semibold text-black transition-all duration-300 hover:scale-105"
             >
               Get Directions
@@ -137,13 +142,13 @@ export default function OfficeLocation() {
           <div className="overflow-hidden rounded-[40px] border border-border shadow-2xl">
 
             <iframe
-              title="HAB Global Consulting Office"
-              src="https://www.google.com/maps?q=London,United+Kingdom&output=embed"
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              className="h-[600px] w-full"
-            />
+  title="HAB Global Consulting Office Location"
+  src="https://maps.google.com/maps?q=51.3486,-2.9774&ll=51.3486,-2.9774&z=17&output=embed"
+  loading="lazy"
+  allowFullScreen
+  referrerPolicy="no-referrer-when-downgrade"
+  className="h-[600px] w-full"
+/>
 
           </div>
 

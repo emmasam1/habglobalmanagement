@@ -25,16 +25,16 @@ const contactItems = [
   {
     icon: MapPin,
     title: "Office Location",
-    value: "Abuja, Nigeria",
+    value: "Unit 24–25, The Sovereign Centre High Street Weston-super-Mare BS23 1HL",
     description:
-      "Serving organisations across Nigeria and internationally.",
+      "Serving organisations across the UK and internationally.",
   },
   {
     icon: Clock3,
     title: "Business Hours",
     value: "Mon – Fri",
     description:
-      "8:00 AM – 5:00 PM (WAT)",
+      "9:00 AM – 5:00 PM (GMT)",
   },
   {
     icon: MessageCircleMore,
