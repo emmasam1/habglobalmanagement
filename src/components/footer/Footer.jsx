@@ -187,7 +187,7 @@ export default function Footer() {
           <div>
             <h3 className="mb-8 text-xl font-semibold">Contact</h3>
 
-            <ContactItem icon={<Phone size={18} />} text="+44 XXXX XXX XXX" />
+            <ContactItem icon={<Phone size={18} />} text="+44 (0)117 244 8224" />
 
             <ContactItem
               icon={<Mail size={18} />}
