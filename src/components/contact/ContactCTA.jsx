@@ -75,7 +75,7 @@ export default function ContactCTA() {
             </PrimaryButton>
 
             <Link
-              href="mailto:info@habglobalconsulting.com"
+              href="mailto:info@habglobalmanagement.co.uk"
               className="inline-flex items-center justify-center gap-3 rounded-full border border-border px-8 py-4 font-semibold transition-all duration-300 hover:border-secondary hover:text-secondary hover:shadow-lg"
             >
               <Mail size={18} />
