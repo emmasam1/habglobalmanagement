@@ -17,10 +17,10 @@ const contactItems = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "info@habglobalconsulting.com",
+    value: "info@habglobalmanagement.co.uk",
     description:
       "Send us your enquiry and we'll respond as soon as possible.",
-    href: "mailto:info@habglobalconsulting.com",
+    href: "mailto:info@habglobalmanagement.co.uk",
   },
   {
     icon: MapPin,
