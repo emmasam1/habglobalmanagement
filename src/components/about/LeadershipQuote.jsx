@@ -34,7 +34,7 @@ export default function LeadershipSection() {
             alt="Founder"
             width={1400}
             height={1800}
-            className="h-[600px] w-full object-cover grayscale transition duration-700 hover:scale-105"
+            className="h-[600px] w-full object-cover transition duration-700 hover:scale-105"
           />
         </motion.div>
 
