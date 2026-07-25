@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
-  /* Fonts (Added definitions so your body/headings work) */
+  /* Fonts */
   --font-sans: "Geist Sans", sans-serif;
   --font-heading: "Geist Sans", sans-serif;
 
@@ -12,9 +12,9 @@
   --foreground: #1f2937;
 
   /* Brand Colors */
-  --primary: #0f172a;       /* Navy */
-  --primary-light: #1e3a8a; /* Royal Blue */
-  --secondary: #d4af37;     /* Gold */
+  --primary: #0f172a;
+  --primary-light: #1e3a8a;
+  --secondary: #d4af37;
 
   /* Neutral */
   --surface: #ffffff;
@@ -34,7 +34,7 @@
 }
 
 @theme inline {
-  /* Existing */
+  /* Base */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
@@ -53,6 +53,12 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-light: var(--text-light);
 
+  /* Status */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
+
   /* Fonts */
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
@@ -60,6 +66,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    color-scheme: dark;
+
     --background: #020617;
     --foreground: #f8fafc;
 
@@ -74,29 +82,46 @@
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
     --text-light: #ffffff;
+
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans); /* Fixed from --font-body */
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
 .btn-primary {
-  /* Switched text color to an absolute near-black for perfect legibility on gold buttons */
-  @apply bg-secondary text-[#0f172a] rounded-full px-6 py-3 font-semibold transition-all duration-300 hover:scale-105;
+  @apply rounded-full bg-secondary px-6 py-3 font-semibold text-[#0f172a] transition-all duration-300 hover:scale-105;
 }
 
 .container {

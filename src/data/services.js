@@ -450,6 +450,122 @@ const services = [
 
     faqs: [],
   },
+
+
+
+  {
+  title: "Healthcare Advisory & Support",
+
+  badge: "Healthcare",
+
+  icon: "HeartPulse",
+
+  accent: "red",
+
+  price: 5000,
+
+  duration: "",
+
+  featured: false,
+
+  active: true,
+
+  shortDescription:
+    "Supporting healthcare organisations with operational excellence and administrative improvement.",
+
+  overview:
+    "Healthcare organisations require efficient administration, sound operational processes and effective support systems. Our advisory services help improve service delivery and organisational performance.",
+
+  challenges: [
+    "Operational inefficiencies",
+    "Administrative workload",
+    "Compliance challenges",
+    "Service delivery issues",
+  ],
+
+  included: [
+    "Healthcare Administration",
+    "Operational Reviews",
+    "Compliance Guidance",
+    "Service Improvement",
+    "Workflow Optimisation",
+  ],
+
+  benefits: [
+    "Improved healthcare administration",
+    "More efficient operational workflows",
+    "Stronger compliance processes",
+    "Better service delivery",
+    "Reduced administrative workload",
+  ],
+
+  outcomes: [
+    {
+      title: "Improved Operational Efficiency",
+      description:
+        "Streamline workflows and optimise resources to improve day-to-day performance.",
+      icon: "Activity",
+    },
+    {
+      title: "Better Strategic Decisions",
+      description:
+        "Support leadership with practical insights for confident decision-making.",
+      icon: "Lightbulb",
+    },
+    {
+      title: "Sustainable Growth",
+      description:
+        "Create a strong foundation for long-term organisational success.",
+      icon: "TrendingUp",
+    },
+    {
+      title: "Enhanced Business Performance",
+      description:
+        "Improve operational effectiveness and overall organisational outcomes.",
+      icon: "Gauge",
+    },
+  ],
+
+  industries: [
+    "Hospitals",
+    "Clinics",
+    "NGOs",
+    "Healthcare Providers",
+  ],
+
+  faq: [
+  {
+    question:
+      "Who is this healthcare advisory service designed for?",
+    answer:
+      "This service is designed for hospitals, clinics, healthcare providers, NGOs and other organisations seeking to improve their administration, operations and service delivery.",
+  },
+  {
+    question:
+      "Can you help improve our healthcare administrative processes?",
+    answer:
+      "Yes. We review existing administrative processes, identify inefficiencies and recommend practical improvements to documentation, coordination and daily operations.",
+  },
+  {
+    question:
+      "Do you provide healthcare compliance support?",
+    answer:
+      "Yes. We provide general compliance guidance and help organisations strengthen the administrative systems used to support their regulatory responsibilities.",
+  },
+  {
+    question:
+      "Can the advisory service be delivered remotely?",
+    answer:
+      "Yes. Consultations, assessments and ongoing advisory support can be provided remotely or in person, depending on the organisation's requirements.",
+  },
+  {
+    question:
+      "Is the service suitable for small clinics?",
+    answer:
+      "Yes. The service can be tailored to organisations of different sizes, including independent clinics, growing healthcare providers and larger institutions.",
+  },
+]
+}
 ];
 
 export default services;

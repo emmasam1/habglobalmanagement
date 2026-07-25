@@ -9,7 +9,7 @@ import {
 import Section from "@/components/layout/Section";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 
-const timelines = [
+const TIMELINE_OPTIONS = [
   "Immediately",
   "Within 2 Weeks",
   "Within 1 Month",
@@ -17,15 +17,7 @@ const timelines = [
   "Flexible",
 ];
 
-const budgets = [
-  "Under £5,000",
-  "£5,000 - £10,000",
-  "£10,000 - £25,000",
-  "£25,000+",
-  "Let's Discuss",
-];
-
-const meetings = [
+const MEETING_OPTIONS = [
   "Video Meeting",
   "Phone Call",
   "On-site Meeting",
@@ -37,59 +29,51 @@ export default function StepThree({
   back,
   data,
 }) {
-
   const [form, setForm] = useState({
-
     project: data.project || "",
-
     goals: data.goals || "",
-
     timeline: data.timeline || "",
-
-    budget: data.budget || "",
-
     meeting: data.meeting || "",
-
   });
 
-  function update(name, value) {
-
-    setForm((prev) => ({
-      ...prev,
+  const updateField = (name, value) => {
+    setForm((currentForm) => ({
+      ...currentForm,
       [name]: value,
     }));
+  };
 
-  }
+  const canContinue = Boolean(
+    form.project.trim() &&
+      form.timeline &&
+      form.meeting,
+  );
 
-  const canContinue =
-    form.project &&
-    form.timeline &&
-    form.meeting;
+  const handleContinue = () => {
+    if (!canContinue) return;
+
+    next({
+      project: form.project.trim(),
+      goals: form.goals.trim(),
+      timeline: form.timeline,
+      meeting: form.meeting,
+    });
+  };
 
   return (
-
     <Section className="pb-28">
-
-      <div className="mx-auto max-w-5xl rounded-[40px] border border-border bg-background p-10 shadow-xl">
-
+      <div className="mx-auto max-w-5xl rounded-[40px] border border-border bg-background p-6 shadow-xl sm:p-10">
         <div className="mb-12">
-
-          <h2 className="text-4xl font-black text-text-primary">
-
+          <h2 className="text-3xl font-black text-text-primary sm:text-4xl">
             Tell Us About Your Project
-
           </h2>
 
           <p className="mt-4 text-text-secondary">
-
-            The more information you provide, the better we can prepare
-            before contacting you.
-
+            The more information you provide,
+            the better we can prepare before
+            contacting you.
           </p>
-
         </div>
-
-        {/* Project */}
 
         <FieldTitle>
           Describe your current challenge
@@ -98,14 +82,15 @@ export default function StepThree({
         <textarea
           rows={6}
           value={form.project}
-          onChange={(e) =>
-            update("project", e.target.value)
+          onChange={(event) =>
+            updateField(
+              "project",
+              event.target.value,
+            )
           }
           placeholder="Tell us about your project..."
-          className="w-full rounded-3xl border border-border bg-transparent p-6 outline-none transition focus:border-secondary"
+          className={textareaClasses}
         />
-
-        {/* Goals */}
 
         <FieldTitle className="mt-10">
           What do you want to achieve?
@@ -114,87 +99,63 @@ export default function StepThree({
         <textarea
           rows={5}
           value={form.goals}
-          onChange={(e) =>
-            update("goals", e.target.value)
+          onChange={(event) =>
+            updateField(
+              "goals",
+              event.target.value,
+            )
           }
           placeholder="Business growth, efficiency, compliance..."
-          className="w-full rounded-3xl border border-border bg-transparent p-6 outline-none transition focus:border-secondary"
+          className={textareaClasses}
         />
 
-        {/* Timeline */}
-
         <FieldTitle className="mt-12">
-
           Desired Timeline
-
-        </FieldTitle> 
-
-        <OptionGrid>
-
-          {timelines.map((item) => (
-
-            <OptionCard
-              key={item}
-              active={form.timeline === item}
-              onClick={() => update("timeline", item)}
-            >
-              {item}
-            </OptionCard>
-
-          ))}
-
-        </OptionGrid>
-
-        {/* Budget */}
-
-        <FieldTitle className="mt-12">
-
-          Estimated Budget
-
         </FieldTitle>
 
         <OptionGrid>
-
-          {budgets.map((item) => (
-
+          {TIMELINE_OPTIONS.map((option) => (
             <OptionCard
-              key={item}
-              active={form.budget === item}
-              onClick={() => update("budget", item)}
+              key={option}
+              active={
+                form.timeline === option
+              }
+              onClick={() =>
+                updateField(
+                  "timeline",
+                  option,
+                )
+              }
             >
-              {item}
+              {option}
             </OptionCard>
-
           ))}
-
         </OptionGrid>
 
-        {/* Meeting */}
-
         <FieldTitle className="mt-12">
-
           Preferred Consultation
-
         </FieldTitle>
 
         <OptionGrid>
-
-          {meetings.map((item) => (
-
+          {MEETING_OPTIONS.map((option) => (
             <OptionCard
-              key={item}
-              active={form.meeting === item}
-              onClick={() => update("meeting", item)}
+              key={option}
+              active={
+                form.meeting === option
+              }
+              onClick={() =>
+                updateField(
+                  "meeting",
+                  option,
+                )
+              }
             >
-              {item}
+              {option}
             </OptionCard>
-
           ))}
-
         </OptionGrid>
 
-        <div className="mt-16 flex justify-between">
-
+        <div className="mt-16 flex items-center justify-between gap-4">
           <PrimaryButton
             variant="outline"
             onClick={back}
@@ -205,83 +166,58 @@ export default function StepThree({
 
           <PrimaryButton
             disabled={!canContinue}
-            onClick={() => next(form)}
+            onClick={handleContinue}
             icon={<ArrowRight size={18} />}
           >
             Continue
           </PrimaryButton>
-
         </div>
-
       </div>
-
     </Section>
-
   );
-
 }
 
 function FieldTitle({
   children,
   className = "",
 }) {
-
   return (
-
     <h3
       className={`mb-4 text-xl font-bold text-text-primary ${className}`}
     >
       {children}
     </h3>
-
   );
-
 }
 
-function OptionGrid({
-  children,
-}) {
-
+function OptionGrid({ children }) {
   return (
-
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-
       {children}
-
     </div>
-
   );
-
 }
 
 function OptionCard({
-
   active,
-
   children,
-
   onClick,
-
 }) {
-
   return (
-
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-2xl border p-5 text-left font-semibold transition-all duration-300
-
-      ${
+      aria-pressed={active}
+      className={`rounded-2xl border p-5 text-left font-semibold transition-all duration-300 ${
         active
           ? "border-secondary bg-secondary/10 text-secondary"
-          : "border-border hover:border-secondary/40"
+          : "border-border text-text-primary hover:border-secondary/40"
       }`}
     >
-
       {children}
-
     </button>
-
   );
-
 }
+
+const textareaClasses =
+  "w-full resize-y rounded-3xl border border-border bg-transparent p-6 text-text-primary outline-none transition placeholder:text-text-secondary/60 focus:border-secondary";

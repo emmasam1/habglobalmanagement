@@ -52,11 +52,11 @@ export default function ServiceIncluded({ service }) {
               >
 
                 <div
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${service.accent.bg}`}
+                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${service.accent?.bg}`}
                 >
                   <Check
                     size={18}
-                    className={service.accent.text}
+                    className={service.accent?.text}
                   />
                 </div>
 

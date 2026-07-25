@@ -29,7 +29,7 @@ export default function ServiceFAQ({ service }) {
 
         <div className="mx-auto mt-20 max-w-4xl space-y-5">
 
-          {service.faqs.map((faq, index) => {
+          {service?.faq.map((faq, index) => {
 
             const opened = active === index;
 

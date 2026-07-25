@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Drawer } from "antd";
@@ -45,7 +46,14 @@ export default function Navbar() {
           {/* Logo */}
 
           <Link href="/" className="flex items-center gap-3">
-            <img src="/hab_logo_2.png" alt="logo" className="w-50" />
+            <Image
+              src="/hab_logo_2.png"
+              alt="HAB Global Management"
+              width={200}
+              height={64}
+              priority
+              className="h-auto w-50"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -90,26 +98,25 @@ export default function Navbar() {
           {/* Desktop CTA */}
 
           <div className="hidden lg:block">
-            <Link href={`/contact?#contact-form`}>
-              <PrimaryButton
-                icon={
-                  <motion.span
-                    animate={{
-                      x: [0, 8, 0],
-                    }}
-                    transition={{
-                      duration: 1,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <ArrowRight size={18} />
-                  </motion.span>
-                }
-              >
-                Get A Quote
-              </PrimaryButton>
-            </Link>
+            <PrimaryButton
+              href="/contact#contact-form"
+              icon={
+                <motion.span
+                  animate={{
+                    x: [0, 8, 0],
+                  }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <ArrowRight size={18} />
+                </motion.span>
+              }
+            >
+              Get A Quote
+            </PrimaryButton>
           </div>
 
           {/* Mobile */}
@@ -173,6 +180,8 @@ export default function Navbar() {
 
           <div className="border-t border-border p-6">
             <PrimaryButton
+              href="/contact#contact-form"
+              onClick={() => setOpen(false)}
               className="w-full justify-center"
               icon={<ArrowRight size={18} />}
             >

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "motion/react";
 import {
   ArrowRight,
@@ -101,18 +100,13 @@ export default function ProcessContent({ step }) {
 
           {/* Button */}
 
-          <Link
-            href="/quote"
-            className="inline-block"
-          >
-            <PrimaryButton
+          <PrimaryButton
             href="/contact"
-              className="mt-10"
-              icon={<AnimatedArrow />}
-            >
-              Get Started
-            </PrimaryButton>
-          </Link>
+            className="mt-10"
+            icon={<AnimatedArrow />}
+          >
+            Get Started
+          </PrimaryButton>
 
         </motion.div>
 

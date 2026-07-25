@@ -32,7 +32,7 @@ export default function ServiceCTA({ service }) {
       >
 
         <span
-          className={`inline-flex rounded-full ${service.accent.bg} px-5 py-2 text-sm font-semibold ${service.accent.text}`}
+          className={`inline-flex rounded-full ${service.accent?.bg} px-5 py-2 text-sm font-semibold ${service.accent?.text}`}
         >
           Ready To Get Started?
         </span>

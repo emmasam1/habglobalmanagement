@@ -9,6 +9,7 @@ export default function PrimaryButton({
   icon,
   href,
   onClick,
+  loading = false,
   variant = "primary",
   size = "md",
   className,
@@ -57,9 +58,11 @@ export default function PrimaryButton({
   // Otherwise render a button
   return (
     <motion.button
+      type="button"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.96 }}
       onClick={onClick}
+      aria-busy={loading || undefined}
       className={classes}
       {...props}
     >

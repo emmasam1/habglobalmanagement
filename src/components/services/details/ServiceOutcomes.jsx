@@ -70,13 +70,13 @@ export default function ServiceOutcomes({ service }) {
                   {/* Hover Glow */}
 
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${service.accent.bg} opacity-0 transition duration-500 group-hover:opacity-100`}
+                    className={`absolute inset-0 bg-gradient-to-br ${service.accent?.bg} opacity-0 transition duration-500 group-hover:opacity-100`}
                   />
 
                   <div className="relative">
 
                     <div
-                      className={`flex h-16 w-16 items-center justify-center rounded-2xl ${service.accent.bg} ${service.accent.text}`}
+                      className={`flex h-16 w-16 items-center justify-center rounded-2xl ${service.accent?.bg} ${service.accent?.text}`}
                     >
                       <Icon size={30} />
                     </div>

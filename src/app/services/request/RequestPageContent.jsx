@@ -1,7 +1,7 @@
 "use client";
 
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
 
 import RequestHero from "@/components/request/RequestHero";
 import RequestStepper from "@/components/request/RequestStepper";
@@ -11,30 +11,62 @@ import StepThree from "@/components/request/StepThree";
 import StepFour from "@/components/request/StepFour";
 import SuccessScreen from "@/components/request/SuccessScreen";
 
+const INITIAL_STEP = 0;
+const SUCCESS_STEP = 4;
+
 export default function RequestPageContent() {
   const searchParams = useSearchParams();
+  const serviceSlug =
+    searchParams.get("service") || "";
 
-  const defaultService = useMemo(
-    () => searchParams.get("service") || "",
-    [searchParams]
-  );
+  const [step, setStep] =
+    useState(INITIAL_STEP);
 
-  const [step, setStep] = useState(0);
+  const [formData, setFormData] =
+    useState(() => ({
+      service: serviceSlug,
+      serviceData: null,
 
-  const [formData, setFormData] = useState({
-    service: defaultService,
-  });
+      company: "",
+      contact: "",
+      jobTitle: "",
+      email: "",
+      phone: "",
+      website: "",
+      country: "",
+      industry: "",
+      employees: "",
+
+      project: "",
+      goals: "",
+      timeline: "",
+      meeting: "",
+
+      requestId: "",
+    }));
 
   const next = (data = {}) => {
-    setFormData((prev) => ({
-      ...prev,
+    setFormData((currentData) => ({
+      ...currentData,
       ...data,
     }));
 
-    setStep((prev) => prev + 1);
+    setStep((currentStep) =>
+      Math.min(
+        currentStep + 1,
+        SUCCESS_STEP,
+      ),
+    );
   };
 
-  const back = () => setStep((prev) => prev - 1);
+  const back = () => {
+    setStep((currentStep) =>
+      Math.max(
+        currentStep - 1,
+        INITIAL_STEP,
+      ),
+    );
+  };
 
   return (
     <>
@@ -73,7 +105,9 @@ export default function RequestPageContent() {
         />
       )}
 
-      {step === 4 && <SuccessScreen />}
+      {step === SUCCESS_STEP && (
+        <SuccessScreen data={formData} />
+      )}
     </>
   );
 }
