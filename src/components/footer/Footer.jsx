@@ -161,7 +161,7 @@ export default function Footer() {
 
             <FooterLink href="/services">Services</FooterLink>
 
-            <FooterLink href="/industries">Industries</FooterLink>
+            {/* <FooterLink href="/industries">Industries</FooterLink> */}
 
             <FooterLink href="/contact">Contact</FooterLink>
           </div>
