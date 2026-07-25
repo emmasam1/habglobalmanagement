@@ -51,7 +51,7 @@ export default function ContactHero() {
             </PrimaryButton>
 
             <Link
-              href="tel:+234000000000"
+              href="tel:+4401172448224"
               className="inline-flex items-center justify-center gap-3 rounded-full border border-border px-8 py-4 font-semibold transition hover:border-secondary hover:text-secondary"
             >
               <Phone size={18} />
