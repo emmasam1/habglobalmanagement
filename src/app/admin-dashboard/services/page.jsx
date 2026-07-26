@@ -15,7 +15,7 @@ import AdminServiceCard from "@/components/admin/services/AdminServiceCard";
 const SERVICES_PER_PAGE = 9;
 const SEARCH_DEBOUNCE_DELAY = 400;
 const SERVICES_ROUTE =
-  "/admin-dashboard/services";
+  "/admin-dashboard/service";
 
 export default function ServicesPage() {
   const router = useRouter();

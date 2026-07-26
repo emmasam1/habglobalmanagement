@@ -25,6 +25,15 @@ export default function LoginPage() {
   const isAuthenticated = useAuthStore(
     (state) => state.isAuthenticated,
   );
+  const sessionChecked = useAuthStore(
+    (state) => state.sessionChecked,
+  );
+  const loadSession = useAuthStore(
+    (state) => state.loadSession,
+  );
+  const restoreCachedAdmin = useAuthStore(
+    (state) => state.restoreCachedAdmin,
+  );
 
   const [formData, setFormData] = useState({
     email: "",
@@ -36,10 +45,15 @@ export default function LoginPage() {
     useState(false);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    restoreCachedAdmin();
+    void loadSession();
+  }, [loadSession, restoreCachedAdmin]);
+
+  useEffect(() => {
+    if (sessionChecked && isAuthenticated) {
       router.replace("/admin-dashboard/dashboard");
     }
-  }, [isAuthenticated, router]);
+  }, [isAuthenticated, router, sessionChecked]);
 
   const handleChange = (event) => {
     const { name, value, type, checked } =

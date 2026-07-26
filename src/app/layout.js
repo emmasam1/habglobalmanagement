@@ -3,6 +3,8 @@ import { Inter, Poppins } from "next/font/google";
 import ThemeRegistry from "@/components/providers/ThemeRegistry";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
 
+const siteUrl = "https://www.habglobalmanagement.co.uk";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-body",
@@ -15,13 +17,105 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "HAB GLOBAL MANAGEMENT LTD",
-  description: "Professional Management & Business Solutions",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "HAB Global Management | Business & Management Consultancy",
+    template: "%s | HAB Global Management",
+  },
+  description:
+    "UK business and management consultancy providing strategic, administrative, compliance, operational and healthcare advisory services.",
+  applicationName: "HAB Global Management",
+  authors: [{ name: "HAB Global Management Ltd", url: siteUrl }],
+  creator: "HAB Global Management Ltd",
+  publisher: "HAB Global Management Ltd",
+  keywords: [
+    "business consultancy UK",
+    "management consultancy",
+    "business strategy",
+    "operational improvement",
+    "administrative support",
+    "compliance support",
+    "healthcare advisory",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: siteUrl,
+    siteName: "HAB Global Management",
+    title: "HAB Global Management | Business & Management Consultancy",
+    description:
+      "Practical business, management and advisory solutions that help organisations improve performance and grow sustainably.",
+    images: [
+      {
+        url: "/hab_bg_image.png",
+        width: 1536,
+        height: 1024,
+        alt: "HAB Global Management business consultancy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HAB Global Management | Business & Management Consultancy",
+    description:
+      "Practical business, management and advisory solutions for sustainable organisational growth.",
+    images: ["/hab_bg_image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/hab_round.png",
+    apple: "/hab_logo_1.png",
+  },
+  category: "business",
 };
 
 export default function RootLayout({ children }) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "HAB Global Management Ltd",
+    url: siteUrl,
+    logo: `${siteUrl}/hab_logo_light.png`,
+    image: `${siteUrl}/hab_bg_image.png`,
+    email: "info@habglobalmanagement.co.uk",
+    description:
+      "UK business and management consultancy providing strategic, administrative, compliance, operational and healthcare advisory services.",
+    areaServed: {
+      "@type": "Country",
+      name: "United Kingdom",
+    },
+    knowsAbout: [
+      "Business strategy",
+      "Management consultancy",
+      "Operational improvement",
+      "Compliance support",
+      "Healthcare advisory",
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
+          }}
+        />
+      </head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         <ThemeRegistry>
           <LayoutWrapper>

@@ -21,7 +21,7 @@ import serviceApi from "@/api/serviceApi";
 import DashboardLayout from "@/components/admin/dashboard/DashboardLayout";
 
 const SERVICES_ROUTE =
-  "/admin-dashboard/services";
+  "/admin-dashboard/service";
 
 const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
 
@@ -120,12 +120,22 @@ const INITIAL_FORM = {
   ],
 };
 
-export default function CreateServicePage() {
+export default function CreateServicePage({
+  editSlug = "",
+}) {
   const router = useRouter();
   const imageInputRef = useRef(null);
+  const imagePreviewUrlRef = useRef("");
+  const editing = Boolean(editSlug);
 
   const [form, setForm] =
     useState(INITIAL_FORM);
+  const [serviceId, setServiceId] =
+    useState("");
+  const [existingImage, setExistingImage] =
+    useState("");
+  const [loadingService, setLoadingService] =
+    useState(editing);
   const [heroImage, setHeroImage] =
     useState(null);
   const [imagePreview, setImagePreview] =
@@ -135,20 +145,67 @@ export default function CreateServicePage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!heroImage) {
-      setImagePreview("");
-      return undefined;
-    }
+    if (!editSlug) return;
 
-    const previewUrl =
-      URL.createObjectURL(heroImage);
+    let active = true;
 
-    setImagePreview(previewUrl);
+    const loadService = async () => {
+      try {
+        setLoadingService(true);
+        setError("");
+
+        const response =
+          await serviceApi.getService(editSlug);
+
+        const service =
+          response?.data || response;
+
+        if (!service?._id) {
+          throw new Error(
+            "The service could not be found.",
+          );
+        }
+
+        if (!active) return;
+
+        setServiceId(service._id);
+        setExistingImage(
+          service.heroImage || "",
+        );
+        setForm(serviceToForm(service));
+      } catch (requestError) {
+        if (!active) return;
+
+        setError(
+          getErrorMessage(
+            requestError,
+            "Unable to load the service.",
+          ),
+        );
+      } finally {
+        if (active) {
+          setLoadingService(false);
+        }
+      }
+    };
+
+    loadService();
 
     return () => {
-      URL.revokeObjectURL(previewUrl);
+      active = false;
     };
-  }, [heroImage]);
+  }, [editSlug]);
+
+  useEffect(
+    () => () => {
+      if (imagePreviewUrlRef.current) {
+        URL.revokeObjectURL(
+          imagePreviewUrlRef.current,
+        );
+      }
+    },
+    [],
+  );
 
   const updateField = (field, value) => {
     setForm((currentForm) => ({
@@ -184,10 +241,31 @@ export default function CreateServicePage() {
 
     setError("");
     setHeroImage(file);
+
+    if (imagePreviewUrlRef.current) {
+      URL.revokeObjectURL(
+        imagePreviewUrlRef.current,
+      );
+    }
+
+    const previewUrl =
+      URL.createObjectURL(file);
+
+    imagePreviewUrlRef.current =
+      previewUrl;
+    setImagePreview(previewUrl);
   };
 
   const removeImage = () => {
     setHeroImage(null);
+    setImagePreview("");
+
+    if (imagePreviewUrlRef.current) {
+      URL.revokeObjectURL(
+        imagePreviewUrlRef.current,
+      );
+      imagePreviewUrlRef.current = "";
+    }
 
     if (imageInputRef.current) {
       imageInputRef.current.value = "";
@@ -217,15 +295,21 @@ export default function CreateServicePage() {
         heroImage,
       );
 
-      const response =
-        await serviceApi.createService(
-          formData,
-        );
+      const response = editing
+        ? await serviceApi.updateService(
+            serviceId,
+            formData,
+          )
+        : await serviceApi.createService(
+            formData,
+          );
 
       if (response?.success === false) {
         throw new Error(
           response?.message ||
-            "Unable to create the service.",
+            (editing
+              ? "Unable to update the service."
+              : "Unable to create the service."),
         );
       }
 
@@ -233,14 +317,18 @@ export default function CreateServicePage() {
       router.refresh();
     } catch (requestError) {
       console.error(
-        "Create service error:",
+        editing
+          ? "Update service error:"
+          : "Create service error:",
         requestError,
       );
 
       setError(
         getErrorMessage(
           requestError,
-          "Unable to create the service.",
+          editing
+            ? "Unable to update the service."
+            : "Unable to create the service.",
         ),
       );
 
@@ -255,6 +343,7 @@ export default function CreateServicePage() {
       <div className="mx-auto max-w-7xl">
         <PageHeader
           submitting={submitting}
+          editing={editing}
           onBack={() =>
             router.push(SERVICES_ROUTE)
           }
@@ -267,8 +356,11 @@ export default function CreateServicePage() {
           />
         )}
 
+        {loadingService ? (
+          <ServiceFormSkeleton />
+        ) : (
         <form
-          id="create-service-form"
+          id="service-form"
           onSubmit={handleSubmit}
           className="mt-8"
         >
@@ -580,7 +672,10 @@ export default function CreateServicePage() {
             <aside className="space-y-6">
               <HeroImageEditor
                 imageInputRef={imageInputRef}
-                imagePreview={imagePreview}
+                imagePreview={
+                  imagePreview ||
+                  existingImage
+                }
                 heroImage={heroImage}
                 onImageChange={
                   handleImageChange
@@ -635,8 +730,12 @@ export default function CreateServicePage() {
                   )}
 
                   {submitting
-                    ? "Creating service..."
-                    : "Create service"}
+                    ? editing
+                      ? "Updating service..."
+                      : "Creating service..."
+                    : editing
+                      ? "Update service"
+                      : "Create service"}
                 </button>
 
                 <button
@@ -655,6 +754,7 @@ export default function CreateServicePage() {
             </aside>
           </div>
         </form>
+        )}
       </div>
     </DashboardLayout>
   );
@@ -662,6 +762,7 @@ export default function CreateServicePage() {
 
 function PageHeader({
   submitting,
+  editing,
   onBack,
 }) {
   return (
@@ -677,19 +778,21 @@ function PageHeader({
         </button>
 
         <h1 className="mt-4 text-3xl font-bold text-text-primary">
-          Create a new service
+          {editing
+            ? "Edit service"
+            : "Create a new service"}
         </h1>
 
         <p className="mt-2 max-w-2xl text-text-secondary">
-          Add the service information,
-          outcomes, process and publishing
-          settings.
+          {editing
+            ? "Update the service information and publishing settings."
+            : "Add the service information, outcomes and publishing settings."}
         </p>
       </div>
 
       <button
         type="submit"
-        form="create-service-form"
+        form="service-form"
         disabled={submitting}
         className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-secondary px-6 font-semibold text-primary transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
       >
@@ -703,8 +806,12 @@ function PageHeader({
         )}
 
         {submitting
-          ? "Creating..."
-          : "Create service"}
+          ? editing
+            ? "Updating..."
+            : "Creating..."
+          : editing
+            ? "Update service"
+            : "Create service"}
       </button>
     </header>
   );
@@ -1299,6 +1406,99 @@ function ErrorMessage({
       </button>
     </div>
   );
+}
+
+function ServiceFormSkeleton() {
+  return (
+    <div className="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+      <div className="space-y-6">
+        {Array.from({ length: 4 }).map(
+          (_, index) => (
+            <div
+              key={index}
+              className="h-64 animate-pulse rounded-2xl border border-border bg-surface-secondary"
+            />
+          ),
+        )}
+      </div>
+
+      <div className="h-96 animate-pulse rounded-2xl border border-border bg-surface-secondary" />
+    </div>
+  );
+}
+
+function serviceToForm(service) {
+  const stringItems = (value) =>
+    Array.isArray(value) && value.length
+      ? value.map((item) =>
+          String(item ?? ""),
+        )
+      : [""];
+
+  const outcomes =
+    Array.isArray(service.outcomes) &&
+    service.outcomes.length
+      ? service.outcomes.map((item) => ({
+          title: item?.title || "",
+          description:
+            item?.description || "",
+          icon:
+            item?.icon || "TrendingUp",
+        }))
+      : [
+          {
+            title: "",
+            description: "",
+            icon: "TrendingUp",
+          },
+        ];
+
+  const faq =
+    Array.isArray(service.faq) &&
+    service.faq.length
+      ? service.faq.map((item) => ({
+          question: item?.question || "",
+          answer: item?.answer || "",
+        }))
+      : [
+          {
+            question: "",
+            answer: "",
+          },
+        ];
+
+  return {
+    title: service.title || "",
+    badge: service.badge || "",
+    shortDescription:
+      service.shortDescription || "",
+    overview: service.overview || "",
+    icon:
+      service.icon || "BriefcaseBusiness",
+    accent: service.accent || "gold",
+    price:
+      service.price === undefined ||
+      service.price === null
+        ? ""
+        : String(service.price),
+    duration: service.duration || "",
+    featured: Boolean(service.featured),
+    active: service.active !== false,
+    challenges: stringItems(
+      service.challenges,
+    ),
+    included: stringItems(
+      service.included,
+    ),
+    benefits: stringItems(
+      service.benefits,
+    ),
+    outcomes,
+    industries: stringItems(
+      service.industries,
+    ),
+    faq,
+  };
 }
 
 function buildServiceFormData(

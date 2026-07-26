@@ -46,14 +46,21 @@ export default function Navbar() {
           {/* Logo */}
 
           <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/hab_logo_2.png"
-              alt="HAB Global Management"
-              width={200}
-              height={64}
-              priority
-              className="h-auto w-50"
-            />
+            <picture>
+              <source
+                media="(prefers-color-scheme: light)"
+                srcSet="/hab_logo_light.png"
+              />
+
+              <Image
+                src="/hab_logo_2.png"
+                alt="HAB Global Management"
+                width={200}
+                height={64}
+                priority
+                className="h-auto w-50"
+              />
+            </picture>
           </Link>
 
           {/* Desktop Navigation */}

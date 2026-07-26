@@ -12,6 +12,21 @@ import Journey from "@/components/about/Journey";
 import AboutCTA from "@/components/about/AboutCTA";
 // import CTA from "@/components/cta/CTA";
 
+export const metadata = {
+  title: "About Us",
+  description:
+    "Discover HAB Global Management Ltd, our approach and our commitment to practical, ethical and sustainable business solutions.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About HAB Global Management",
+    description:
+      "Meet the consultancy helping organisations strengthen operations, strategy and long-term performance.",
+    url: "/about",
+  },
+};
+
 export default function AboutPage() {
   return (
     <>

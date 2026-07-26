@@ -26,13 +26,12 @@ api.interceptors.response.use(
         window.location.pathname;
 
       const isAuthPage =
-        currentPath.includes(
-          "/admin-login",
-        );
+        currentPath ===
+        "/admin-dashboard";
 
       if (!isAuthPage) {
         window.location.href =
-          "/admin-login";
+          "/admin-dashboard";
       }
     }
 

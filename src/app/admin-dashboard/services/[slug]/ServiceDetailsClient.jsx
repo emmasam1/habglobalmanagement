@@ -74,7 +74,7 @@ export default function ServiceDetailsClient({ slug }) {
     if (!service?.slug) return;
 
     router.push(
-      `/admin-dashboard/services/${encodeURIComponent(
+      `/admin-dashboard/service/${encodeURIComponent(
         service.slug,
       )}/edit`,
     );
@@ -100,7 +100,7 @@ export default function ServiceDetailsClient({ slug }) {
       }
 
       router.replace(
-        "/admin-dashboard/services",
+        "/admin-dashboard/service",
       );
       router.refresh();
     } catch (error) {
@@ -134,7 +134,7 @@ export default function ServiceDetailsClient({ slug }) {
           message={error}
           onBack={() =>
             router.push(
-              "/admin-dashboard/services",
+              "/admin-dashboard/service",
             )
           }
           onRetry={fetchService}
@@ -173,7 +173,7 @@ export default function ServiceDetailsClient({ slug }) {
             type="button"
             onClick={() =>
               router.push(
-                "/admin-dashboard/services",
+                "/admin-dashboard/service",
               )
             }
             className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-text-secondary transition hover:text-secondary"

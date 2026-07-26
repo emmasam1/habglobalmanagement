@@ -34,6 +34,21 @@ import ServicesNavigator from "@/components/services/ServicesNavigator";
 import Industries from "@/components/services/Industries";
 import ServicesCTA from "@/components/services/ServicesCTA";
 
+export const metadata = {
+  title: "Business Consultancy Services",
+  description:
+    "Explore strategic business solutions, administrative services, compliance support, operational improvement and healthcare advisory from HAB Global Management.",
+  alternates: {
+    canonical: "/services",
+  },
+  openGraph: {
+    title: "Business Consultancy Services",
+    description:
+      "Practical consultancy and management support designed around your organisation's needs.",
+    url: "/services",
+  },
+};
+
 export default function ServicesPage() {
   return (
     <>
