@@ -66,7 +66,7 @@ export default function CTA() {
 
           <div className="mt-12 flex flex-col justify-center gap-5 sm:flex-row">
 
-            <Link href="/contact">
+            <Link href="/contact#contact-form">
 
               <motion.div
                 animate={{

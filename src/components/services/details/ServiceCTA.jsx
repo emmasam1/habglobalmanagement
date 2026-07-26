@@ -58,7 +58,7 @@ export default function ServiceCTA({ service }) {
           </PrimaryButton>
 
           <Link
-            href="/contact"
+            href="/contact#contact-form"
             className="inline-flex items-center justify-center gap-3 rounded-full border border-border px-8 py-4 font-semibold transition hover:border-secondary hover:text-secondary"
           >
             <Calendar size={18} />

@@ -58,7 +58,7 @@ export default function ContactForm() {
   return (
     <Section
       id="contact-form"
-      className="relative overflow-hidden py-28 lg:py-36"
+      className="relative scroll-mt-20 overflow-hidden py-28 lg:py-36"
     >
 
       <BackgroundGlow />
@@ -124,7 +124,6 @@ export default function ContactForm() {
         >
 
           <Form
-          id="contact-form"
             layout="vertical"
             onFinish={onFinish}
           >

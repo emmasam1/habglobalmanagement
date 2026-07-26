@@ -215,7 +215,7 @@ BS23 1HL"
             </p>
 
             <Link
-              href="/contact"
+              href="/contact#contact-form"
               className="group mt-8 inline-flex items-center gap-2 font-semibold text-secondary transition"
             >
               Get a Free Quote

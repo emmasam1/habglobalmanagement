@@ -54,7 +54,7 @@ export default function ServicesCTA() {
             <div className="mt-14 flex flex-col items-center justify-center gap-5 sm:flex-row">
 
               <PrimaryButton
-                href="/contact"
+                href="/contact#contact-form"
                 icon={<ArrowRight size={18} />}
               >
                 Request a Consultation

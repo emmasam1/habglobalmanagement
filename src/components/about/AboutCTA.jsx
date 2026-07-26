@@ -57,7 +57,7 @@ export default function AboutCTA() {
           <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
 
             <PrimaryButton
-              href="/contact"
+              href="/contact#contact-form"
               icon={<ArrowRight size={18} />}
             >
               Book a Consultation

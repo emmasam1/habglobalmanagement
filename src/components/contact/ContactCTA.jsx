@@ -68,7 +68,7 @@ export default function ContactCTA() {
           <div className="mt-14 flex flex-col items-center justify-center gap-5 sm:flex-row">
 
             <PrimaryButton
-              href="/services/request"
+              href="/contact#contact-form"
               icon={<CalendarDays size={18} />}
             >
               Request Consultation
