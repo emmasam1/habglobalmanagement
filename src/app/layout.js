@@ -13,7 +13,7 @@ const inter = Inter({
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-heading",
+  variable: "--font-poppins",
 });
 
 export const metadata = {
@@ -50,9 +50,9 @@ export const metadata = {
       "Practical business, management and advisory solutions that help organisations improve performance and grow sustainably.",
     images: [
       {
-        url: "/hab_bg_image.png",
-        width: 1536,
-        height: 1024,
+        url: "/hab-social-preview.jpg",
+        width: 1200,
+        height: 630,
         alt: "HAB Global Management business consultancy",
       },
     ],
@@ -62,7 +62,7 @@ export const metadata = {
     title: "HAB Global Management | Business & Management Consultancy",
     description:
       "Practical business, management and advisory solutions for sustainable organisational growth.",
-    images: ["/hab_bg_image.png"],
+    images: ["/hab-social-preview.jpg"],
   },
   robots: {
     index: true,
@@ -89,7 +89,7 @@ export default function RootLayout({ children }) {
     name: "HAB Global Management Ltd",
     url: siteUrl,
     logo: `${siteUrl}/hab_logo_light.png`,
-    image: `${siteUrl}/hab_bg_image.png`,
+    image: `${siteUrl}/hab-social-preview.jpg`,
     email: "info@habglobalmanagement.co.uk",
     description:
       "UK business and management consultancy providing strategic, administrative, compliance, operational and healthcare advisory services.",
@@ -116,7 +116,10 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={`${inter.variable} ${poppins.variable}`}>
+      <body
+        suppressHydrationWarning
+        className={`${inter.variable} ${poppins.variable}`}
+      >
         <ThemeRegistry>
           <LayoutWrapper>
             {children}

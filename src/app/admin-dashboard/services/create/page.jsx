@@ -111,6 +111,13 @@ const INITIAL_FORM = {
       icon: "TrendingUp",
     },
   ],
+  process: [
+    {
+      title: "",
+      description: "",
+      icon: "CircleCheckBig",
+    },
+  ],
   industries: [""],
   faq: [
     {
@@ -434,9 +441,9 @@ export default function CreateServicePage({
                   </FormField>
 
                   <FormField
-                    label="Price"
+                    label="Price (optional)"
                     htmlFor="price"
-                    required
+                    hint="Leave blank when the client must request a free quote."
                   >
                     <input
                       id="price"
@@ -452,7 +459,6 @@ export default function CreateServicePage({
                       }
                       placeholder="5000"
                       className={inputClasses}
-                      required
                     />
                   </FormField>
 
@@ -631,7 +637,7 @@ export default function CreateServicePage({
                 }
               />
 
-              {/* <ObjectListEditor
+              <ObjectListEditor
                 title="Service process"
                 itemName="Process step"
                 items={form.process}
@@ -646,7 +652,7 @@ export default function CreateServicePage({
                     items,
                   )
                 }
-              /> */}
+              />
 
               <StringListEditor
                 title="Industries served"
@@ -1465,6 +1471,32 @@ function serviceToForm(service) {
             question: "",
             answer: "",
           },
+      ];
+
+  const process =
+    Array.isArray(service.process) &&
+    service.process.length
+      ? service.process.map((item) => ({
+          title:
+            typeof item === "string"
+              ? item
+              : item?.title || "",
+          description:
+            typeof item === "string"
+              ? ""
+              : item?.description || "",
+          icon:
+            typeof item === "string"
+              ? "CircleCheckBig"
+              : item?.icon ||
+                "CircleCheckBig",
+        }))
+      : [
+          {
+            title: "",
+            description: "",
+            icon: "CircleCheckBig",
+          },
         ];
 
   return {
@@ -1494,6 +1526,7 @@ function serviceToForm(service) {
       service.benefits,
     ),
     outcomes,
+    process,
     industries: stringItems(
       service.industries,
     ),
@@ -1574,6 +1607,16 @@ function buildServiceFormData(
   );
 
   formData.append(
+    "process",
+    JSON.stringify(
+      cleanObjectArray(
+        form.process,
+        "CircleCheckBig",
+      ),
+    ),
+  );
+
+  formData.append(
     "faq",
     JSON.stringify(cleanFaq(form.faq)),
   );
@@ -1602,11 +1645,11 @@ function validateService(form) {
   }
 
   if (
-    form.price === "" ||
-    !Number.isFinite(Number(form.price)) ||
-    Number(form.price) < 0
+    form.price !== "" &&
+    (!Number.isFinite(Number(form.price)) ||
+      Number(form.price) <= 0)
   ) {
-    return "Enter a valid service price.";
+    return "Enter a price greater than zero or leave it blank for a quote.";
   }
 
   const outcomes = Array.isArray(
@@ -1631,6 +1674,29 @@ function validateService(form) {
 
   if (invalidOutcome) {
     return "Every outcome with a description must have a title.";
+  }
+
+  const process = Array.isArray(
+    form.process,
+  )
+    ? form.process
+    : [];
+
+  const invalidProcess = process.some(
+    (item) => {
+      const title = String(
+        item?.title ?? "",
+      ).trim();
+      const description = String(
+        item?.description ?? "",
+      ).trim();
+
+      return description && !title;
+    },
+  );
+
+  if (invalidProcess) {
+    return "Every process step with a description must have a title.";
   }
 
   const faq = Array.isArray(form.faq)

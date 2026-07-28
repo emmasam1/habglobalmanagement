@@ -41,7 +41,7 @@ export default function ProcessContent({ step }) {
 
           <div className="mt-6 flex items-center gap-5">
 
-            <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-secondary text-white">
+            <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-secondary text-primary">
 
               <Icon size={20} />
 
@@ -144,12 +144,12 @@ export default function ProcessContent({ step }) {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute -bottom-8 -left-8 rounded-3xl border border-white/20 bg-background/90 p-6 shadow-2xl backdrop-blur-xl"
+            className="absolute -bottom-8 -left-8 rounded-3xl border border-border bg-background/90 p-6 shadow-2xl backdrop-blur-xl"
           >
 
             <div className="flex items-center gap-4">
 
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-white">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-primary">
 
                 <Icon size={24} />
 

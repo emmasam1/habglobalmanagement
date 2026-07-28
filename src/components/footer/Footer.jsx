@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
-
 import {
   FaFacebookF,
   FaInstagram,
@@ -11,30 +10,14 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 
-export default function Footer() {
-  const socialLinks = [
-    {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/company/your-company",
-      icon: <FaLinkedinIn />,
-    },
-    {
-      label: "Facebook",
-      href: "https://facebook.com/your-company",
-      icon: <FaFacebookF />,
-    },
-    {
-      label: "Instagram",
-      href: "https://instagram.com/your-company",
-      icon: <FaInstagram />,
-    },
-    {
-      label: "X",
-      href: "https://x.com/your-company",
-      icon: <FaXTwitter />,
-    },
-  ];
+const socialProfiles = [
+  { label: "LinkedIn", icon: FaLinkedinIn },
+  { label: "Facebook", icon: FaFacebookF },
+  { label: "Instagram", icon: FaInstagram },
+  { label: "X", icon: FaXTwitter },
+];
 
+export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-slate-950 text-white">
       {/* ================================================= */}
@@ -88,7 +71,7 @@ export default function Footer() {
       <div
         className="absolute inset-0 opacity-[0.05]"
         style={{
-          backgroundImage: "url('/images/world-map.svg')",
+          backgroundImage: "url('/hab_bg_image.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "75%",
@@ -131,16 +114,35 @@ export default function Footer() {
             sustainable growth and long-term business success.
           </p>
 
-          {/* Social Icons */}
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact#contact-form"
+              className="rounded-full bg-secondary px-7 py-3 font-semibold text-slate-950 transition hover:-translate-y-0.5"
+            >
+              Discuss your goals
+            </Link>
+            <a
+              href="mailto:info@habglobalmanagement.co.uk"
+              className="rounded-full border border-white/20 px-7 py-3 font-semibold transition hover:border-secondary hover:text-secondary"
+            >
+              Email our team
+            </a>
+          </div>
 
-          <div className="mt-12 flex flex-wrap justify-center gap-5">
-            {socialLinks.map((social) => (
-              <SocialIcon
-                key={social.label}
-                href={social.href}
-                icon={social.icon}
-                label={social.label}
-              />
+          <div
+            className="mt-8 flex flex-wrap justify-center gap-4"
+            aria-label="Social media profiles"
+          >
+            {socialProfiles.map(({ label, icon: Icon }) => (
+              <span
+                key={label}
+                role="img"
+                aria-label={`${label} profile link coming soon`}
+                title={`${label} link coming soon`}
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-lg text-white/80"
+              >
+                <Icon />
+              </span>
             ))}
           </div>
         </motion.div>
@@ -171,15 +173,15 @@ export default function Footer() {
           <div>
             <h3 className="mb-8 text-xl font-semibold">Solutions</h3>
 
-            <FooterLink href="#">Business Consultancy</FooterLink>
+            <FooterLink href="/services/business-solutions">Business Consultancy</FooterLink>
 
-            <FooterLink href="#">Strategic Planning</FooterLink>
+            <FooterLink href="/services/business-solutions">Strategic Planning</FooterLink>
 
-            <FooterLink href="#">Project Management</FooterLink>
+            <FooterLink href="/services/operational-improvement">Operational Improvement</FooterLink>
 
-            <FooterLink href="#">Corporate Training</FooterLink>
+            <FooterLink href="/services/compliance-support">Compliance Support</FooterLink>
 
-            <FooterLink href="#">Business Advisory</FooterLink>
+            <FooterLink href="/services/healthcare-advisory-support">Healthcare Advisory</FooterLink>
           </div>
 
           {/* Contact */}
@@ -187,11 +189,16 @@ export default function Footer() {
           <div>
             <h3 className="mb-8 text-xl font-semibold">Contact</h3>
 
-            <ContactItem icon={<Phone size={18} />} text="+44 (0)117 244 8224" />
+            <ContactItem
+              icon={<Phone size={18} />}
+              text="+44 (0)117 244 8224"
+              href="tel:+441172448224"
+            />
 
             <ContactItem
               icon={<Mail size={18} />}
               text="info@habglobalmanagement.co.uk"
+              href="mailto:info@habglobalmanagement.co.uk"
             />
 
             <ContactItem
@@ -262,52 +269,6 @@ BS23 1HL"
 }
 
 /* ========================================================= */
-/* Social Icon */
-/* ========================================================= */
-
-function SocialIcon({ href, icon, label }) {
-  return (
-    <motion.a
-      href={href}
-      aria-label={label}
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{
-        y: -6,
-        scale: 1.1,
-      }}
-      whileTap={{
-        scale: 0.95,
-      }}
-      transition={{
-        duration: 0.25,
-      }}
-      className="
-        flex
-        h-14
-        w-14
-        items-center
-        justify-center
-        rounded-full
-        border
-        border-white/10
-        bg-white/5
-        text-xl
-        text-white
-        backdrop-blur
-        transition-all
-        duration-300
-        hover:border-secondary
-        hover:bg-secondary
-        hover:text-white
-      "
-    >
-      {icon}
-    </motion.a>
-  );
-}
-
-/* ========================================================= */
 /* Footer Link */
 /* ========================================================= */
 
@@ -348,12 +309,18 @@ function FooterLink({ href, children }) {
 /* Contact Item */
 /* ========================================================= */
 
-function ContactItem({ icon, text }) {
+function ContactItem({ icon, text, href }) {
   return (
     <div className="mb-5 flex items-start gap-3 text-slate-300">
       <div className="mt-1 text-secondary">{icon}</div>
 
-      <span className="leading-7">{text}</span>
+      {href ? (
+        <a className="leading-7 hover:text-secondary" href={href}>
+          {text}
+        </a>
+      ) : (
+        <span className="whitespace-pre-line leading-7">{text}</span>
+      )}
     </div>
   );
 }

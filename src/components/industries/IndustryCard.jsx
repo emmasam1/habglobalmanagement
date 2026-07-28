@@ -14,7 +14,7 @@ export default function IndustryCard({ title, icon: Icon }) {
       }}
       className="group flex min-w-[240px] items-center gap-5 rounded-2xl border border-border bg-background px-6 py-5 shadow-sm"
     >
-      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary/10 transition-all duration-300 group-hover:bg-secondary group-hover:text-white">
+      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-secondary/10 transition-all duration-300 group-hover:bg-secondary group-hover:text-primary">
         <Icon size={26} />
       </div>
 

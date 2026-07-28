@@ -12,6 +12,7 @@ import Section from "@/components/layout/Section";
 import BackgroundGlow from "@/components/ui/BackgroundGlow";
 import PremiumSectionHeading from "@/components/ui/PremiumSectionHeading";
 import PremiumCard from "@/components/ui/PremiumCard";
+import { getServiceAccent } from "@/lib/serviceAccents";
 
 const icons = [
   TrendingDown,
@@ -21,6 +22,8 @@ const icons = [
 ];
 
 export default function ServiceChallenges({ service }) {
+  const accent = getServiceAccent(service?.accent);
+
   return (
     <Section className="relative overflow-hidden py-28 lg:py-36">
 
@@ -66,7 +69,7 @@ export default function ServiceChallenges({ service }) {
                 <PremiumCard className="h-full">
 
                   <div
-                    className={`flex h-16 w-16 items-center justify-center rounded-2xl ${service.accent.bg} ${service.accent.text}`}
+                    className={`flex h-16 w-16 items-center justify-center rounded-2xl ${accent.background} ${accent.text}`}
                   >
                     <Icon size={30} />
                   </div>

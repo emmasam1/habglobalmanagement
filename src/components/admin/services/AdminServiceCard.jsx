@@ -507,8 +507,8 @@ function StatCard({
 function formatPrice(value) {
   const price = Number(value);
 
-  if (!Number.isFinite(price)) {
-    return "Price unavailable";
+  if (!Number.isFinite(price) || price <= 0) {
+    return "Quote required";
   }
 
   return new Intl.NumberFormat("en-GB", {

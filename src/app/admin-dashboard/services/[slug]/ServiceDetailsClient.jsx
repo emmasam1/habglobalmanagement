@@ -792,8 +792,8 @@ function getListValue(item) {
 function formatPrice(value) {
   const price = Number(value);
 
-  if (!Number.isFinite(price)) {
-    return "Not specified";
+  if (!Number.isFinite(price) || price <= 0) {
+    return "Quote required";
   }
 
   return new Intl.NumberFormat("en-GB", {

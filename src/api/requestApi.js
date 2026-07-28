@@ -1,6 +1,11 @@
 import api from "@/lib/axios";
 
 const requestApi = {
+  createRequest: async (payload) => {
+    const response = await api.post("/requests", payload);
+    return response.data;
+  },
+
   getRequests: async () => {
     const response = await api.get("/requests");
     return response.data;
@@ -26,6 +31,19 @@ const requestApi = {
     const response = await api.put(
       `/requests/${encodeURIComponent(id)}`,
       { status },
+    );
+
+    return response.data;
+  },
+
+  sendQuotePaymentLink: async (id, agreedPrice) => {
+    if (!id) {
+      throw new Error("A request ID is required.");
+    }
+
+    const response = await api.post(
+      `/payments/quote/${encodeURIComponent(id)}`,
+      { agreedPrice },
     );
 
     return response.data;

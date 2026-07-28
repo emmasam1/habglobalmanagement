@@ -55,10 +55,11 @@ export default function WhyChoose() {
                 className="relative overflow-hidden rounded-[32px] border border-white/20 shadow-[0_40px_120px_rgba(0,0,0,.15)]"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80"
+                  src="/Compliance_Support.jpg"
                   alt="Business Strategy"
                   width={600}
                   height={700}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="h-full w-full object-cover"
                 />
               </motion.div>
@@ -74,7 +75,7 @@ export default function WhyChoose() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -bottom-8 -left-8 max-w-xs rounded-3xl border border-white/20 bg-background/80 p-6 shadow-2xl backdrop-blur-xl"
+                className="absolute -bottom-8 -left-8 max-w-xs rounded-3xl border border-border bg-background/80 p-6 shadow-2xl backdrop-blur-xl"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary/20">

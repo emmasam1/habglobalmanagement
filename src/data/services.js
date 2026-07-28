@@ -1,12 +1,4 @@
-import {
-  BriefcaseBusiness,
-  ClipboardList,
-  Settings2,
-  ShieldCheck,
-  HeartPulse,
-} from "lucide-react";
-
-const services = [
+const serviceCatalog = [
   {
     id: 1,
     slug: "business-solutions",
@@ -19,10 +11,9 @@ const services = [
 
     icon: "BriefcaseBusiness",
 
-    price:5000,
+    price: "",
 
-    heroImage:
-      "/Business_Solutions.jpg",
+    heroImage: "/Business_Solutions.jpg",
 
     accent: {
       bg: "bg-secondary/10",
@@ -56,27 +47,27 @@ const services = [
     ],
 
     outcomes: [
-  {
-    title: "Improved Operational Efficiency",
-    description:
-      "Streamline workflows and optimise resources to improve day-to-day performance.",
-  },
-  {
-    title: "Better Strategic Decisions",
-    description:
-      "Support leadership with practical insights for confident decision-making.",
-  },
-  {
-    title: "Sustainable Growth",
-    description:
-      "Create a strong foundation for long-term organisational success.",
-  },
-  {
-    title: "Enhanced Business Performance",
-    description:
-      "Improve operational effectiveness and overall organisational outcomes.",
-  },
-],
+      {
+        title: "Improved Operational Efficiency",
+        description:
+          "Streamline workflows and optimise resources to improve day-to-day performance.",
+      },
+      {
+        title: "Better Strategic Decisions",
+        description:
+          "Support leadership with practical insights for confident decision-making.",
+      },
+      {
+        title: "Sustainable Growth",
+        description:
+          "Create a strong foundation for long-term organisational success.",
+      },
+      {
+        title: "Enhanced Business Performance",
+        description:
+          "Improve operational effectiveness and overall organisational outcomes.",
+      },
+    ],
 
     process: [
       "Discovery",
@@ -124,10 +115,9 @@ const services = [
 
     icon: "ClipboardList",
 
-    price:5000,
+    price: "",
 
-    heroImage:
-      "/Administrative_Services.jpg",
+    heroImage: "/Administrative_Services.jpg",
 
     accent: {
       bg: "bg-blue-500/10",
@@ -159,27 +149,27 @@ const services = [
     ],
 
     outcomes: [
-  {
-    title: "Improved Operational Efficiency",
-    description:
-      "Streamline workflows and optimise resources to improve day-to-day performance.",
-  },
-  {
-    title: "Better Strategic Decisions",
-    description:
-      "Support leadership with practical insights for confident decision-making.",
-  },
-  {
-    title: "Sustainable Growth",
-    description:
-      "Create a strong foundation for long-term organisational success.",
-  },
-  {
-    title: "Enhanced Business Performance",
-    description:
-      "Improve operational effectiveness and overall organisational outcomes.",
-  },
-],
+      {
+        title: "Improved Operational Efficiency",
+        description:
+          "Streamline workflows and optimise resources to improve day-to-day performance.",
+      },
+      {
+        title: "Better Strategic Decisions",
+        description:
+          "Support leadership with practical insights for confident decision-making.",
+      },
+      {
+        title: "Sustainable Growth",
+        description:
+          "Create a strong foundation for long-term organisational success.",
+      },
+      {
+        title: "Enhanced Business Performance",
+        description:
+          "Improve operational effectiveness and overall organisational outcomes.",
+      },
+    ],
 
     process: [
       "Discovery",
@@ -210,10 +200,9 @@ const services = [
 
     icon: "Settings2",
 
-    price:5000,
+    price: "",
 
-    heroImage:
-      "/perational_Improvement.jpg",
+    heroImage: "/perational_Improvement.jpg",
 
     accent: {
       bg: "bg-emerald-500/10",
@@ -243,28 +232,28 @@ const services = [
       "Efficiency Audits",
     ],
 
-  outcomes: [
-  {
-    title: "Improved Operational Efficiency",
-    description:
-      "Streamline workflows and optimise resources to improve day-to-day performance.",
-  },
-  {
-    title: "Better Strategic Decisions",
-    description:
-      "Support leadership with practical insights for confident decision-making.",
-  },
-  {
-    title: "Sustainable Growth",
-    description:
-      "Create a strong foundation for long-term organisational success.",
-  },
-  {
-    title: "Enhanced Business Performance",
-    description:
-      "Improve operational effectiveness and overall organisational outcomes.",
-  },
-],
+    outcomes: [
+      {
+        title: "Improved Operational Efficiency",
+        description:
+          "Streamline workflows and optimise resources to improve day-to-day performance.",
+      },
+      {
+        title: "Better Strategic Decisions",
+        description:
+          "Support leadership with practical insights for confident decision-making.",
+      },
+      {
+        title: "Sustainable Growth",
+        description:
+          "Create a strong foundation for long-term organisational success.",
+      },
+      {
+        title: "Enhanced Business Performance",
+        description:
+          "Improve operational effectiveness and overall organisational outcomes.",
+      },
+    ],
 
     process: [
       "Discovery",
@@ -274,12 +263,7 @@ const services = [
       "Monitoring",
     ],
 
-    industries: [
-      "Manufacturing",
-      "Healthcare",
-      "Retail",
-      "Technology",
-    ],
+    industries: ["Manufacturing", "Healthcare", "Retail", "Technology"],
 
     faqs: [],
   },
@@ -294,10 +278,9 @@ const services = [
 
     icon: "ShieldCheck",
 
-    price:5000,
+    price: "",
 
-    heroImage:
-      "/Compliance_Support.jpg",
+    heroImage: "/Compliance_Support.jpg",
 
     accent: {
       bg: "bg-violet-500/10",
@@ -327,27 +310,27 @@ const services = [
     ],
 
     outcomes: [
-  {
-    title: "Improved Operational Efficiency",
-    description:
-      "Streamline workflows and optimise resources to improve day-to-day performance.",
-  },
-  {
-    title: "Better Strategic Decisions",
-    description:
-      "Support leadership with practical insights for confident decision-making.",
-  },
-  {
-    title: "Sustainable Growth",
-    description:
-      "Create a strong foundation for long-term organisational success.",
-  },
-  {
-    title: "Enhanced Business Performance",
-    description:
-      "Improve operational effectiveness and overall organisational outcomes.",
-  },
-],
+      {
+        title: "Improved Operational Efficiency",
+        description:
+          "Streamline workflows and optimise resources to improve day-to-day performance.",
+      },
+      {
+        title: "Better Strategic Decisions",
+        description:
+          "Support leadership with practical insights for confident decision-making.",
+      },
+      {
+        title: "Sustainable Growth",
+        description:
+          "Create a strong foundation for long-term organisational success.",
+      },
+      {
+        title: "Enhanced Business Performance",
+        description:
+          "Improve operational effectiveness and overall organisational outcomes.",
+      },
+    ],
 
     process: [
       "Review",
@@ -357,37 +340,147 @@ const services = [
       "Monitoring",
     ],
 
-    industries: [
-      "Healthcare",
-      "Construction",
-      "Education",
-      "Finance",
-    ],
+    industries: ["Healthcare", "Construction", "Education", "Finance"],
 
     faqs: [],
   },
 
   {
-    id: 5,
-    slug: "healthcare-advisory-support",
+    id: 6,
+    slug: "consulting-services",
 
+    featured: true,
+
+    title: "Consulting Services",
+
+    badge: "Professional Consultancy",
+
+    icon: "BriefcaseBusiness",
+
+    price: 100,
+
+    heroImage: "",
+
+    accent: "gold",
+
+    duration: "",
+
+    active: true,
+
+    shortDescription:
+      "Helping organisations improve performance through strategic consulting and practical business solutions.",
+
+    overview:
+      "Every successful organisation needs more than ideas. It needs clear strategy, efficient operations and informed decision-making. Our Consulting Services help organisations strengthen their foundations, improve performance and prepare for sustainable long-term growth.",
+
+    challenges: [
+      "Unclear business strategy",
+      "Slow organisational growth",
+      "Inefficient operations",
+      "Poor decision-making",
+    ],
+
+    included: [
+      "Business Strategy",
+      "Business Planning",
+      "Growth Advisory",
+      "Business Development",
+      "Market Expansion",
+      "Operational Reviews",
+      "Performance Improvement",
+      "Executive Advisory",
+    ],
+
+    benefits: [
+      "Clearer strategic direction",
+      "More efficient business operations",
+      "Stronger leadership decisions",
+      "Practical plans for sustainable growth",
+      "Ongoing professional guidance",
+    ],
+
+    outcomes: [
+      {
+        title: "Improved Operational Efficiency",
+        description:
+          "Streamline workflows and optimise resources to improve day-to-day performance.",
+        icon: "Activity",
+      },
+      {
+        title: "Better Strategic Decisions",
+        description:
+          "Support leadership with practical insights for confident decision-making.",
+        icon: "Lightbulb",
+      },
+      {
+        title: "Sustainable Growth",
+        description:
+          "Create a strong foundation for long-term organisational success.",
+        icon: "TrendingUp",
+      },
+      {
+        title: "Enhanced Business Performance",
+        description:
+          "Improve operational effectiveness and overall organisational outcomes.",
+        icon: "Gauge",
+      },
+    ],
+
+    process: [
+      "Discovery",
+      "Assessment",
+      "Strategy",
+      "Implementation",
+      "Ongoing Support",
+    ],
+
+    industries: [
+      "Construction",
+      "Retail",
+      "Education",
+      "Healthcare",
+      "Technology",
+      "Professional Services",
+    ],
+
+    faq: [
+      {
+        question:
+          "Who are Consulting Services designed for?",
+        answer:
+          "They are designed for businesses, organisations and entrepreneurs seeking strategic guidance, operational improvement and sustainable growth.",
+      },
+      {
+        question:
+          "Do you work with startups?",
+        answer:
+          "Yes. We support both new and established organisations with solutions tailored to their stage of growth.",
+      },
+      {
+        question:
+          "Can consultations be conducted remotely?",
+        answer:
+          "Yes. We offer both virtual and in-person consultations depending on your requirements.",
+      },
+    ],
+  },
+
+  {
     title: "Healthcare Advisory & Support",
 
     badge: "Healthcare",
 
     icon: "HeartPulse",
 
-    price:5000,
+    accent: "red",
 
-    heroImage:
-      "/Healthcare_Advisory_Support.jpg",
+    price: "",
 
-    accent: {
-      bg: "bg-red-500/10",
-      text: "text-red-500",
-      border: "border-red-500/30",
-      glow: "via-red-500",
-    },
+    duration: "",
+
+    featured: false,
+
+    active: true,
 
     shortDescription:
       "Supporting healthcare organisations with operational excellence and administrative improvement.",
@@ -410,162 +503,78 @@ const services = [
       "Workflow Optimisation",
     ],
 
+    benefits: [
+      "Improved healthcare administration",
+      "More efficient operational workflows",
+      "Stronger compliance processes",
+      "Better service delivery",
+      "Reduced administrative workload",
+    ],
+
     outcomes: [
-  {
-    title: "Improved Operational Efficiency",
-    description:
-      "Streamline workflows and optimise resources to improve day-to-day performance.",
-  },
-  {
-    title: "Better Strategic Decisions",
-    description:
-      "Support leadership with practical insights for confident decision-making.",
-  },
-  {
-    title: "Sustainable Growth",
-    description:
-      "Create a strong foundation for long-term organisational success.",
-  },
-  {
-    title: "Enhanced Business Performance",
-    description:
-      "Improve operational effectiveness and overall organisational outcomes.",
-  },
-],
-
-    process: [
-      "Consultation",
-      "Assessment",
-      "Planning",
-      "Implementation",
-      "Support",
+      {
+        title: "Improved Operational Efficiency",
+        description:
+          "Streamline workflows and optimise resources to improve day-to-day performance.",
+        icon: "Activity",
+      },
+      {
+        title: "Better Strategic Decisions",
+        description:
+          "Support leadership with practical insights for confident decision-making.",
+        icon: "Lightbulb",
+      },
+      {
+        title: "Sustainable Growth",
+        description:
+          "Create a strong foundation for long-term organisational success.",
+        icon: "TrendingUp",
+      },
+      {
+        title: "Enhanced Business Performance",
+        description:
+          "Improve operational effectiveness and overall organisational outcomes.",
+        icon: "Gauge",
+      },
     ],
 
-    industries: [
-      "Hospitals",
-      "Clinics",
-      "NGOs",
-      "Healthcare Providers",
+    industries: ["Hospitals", "Clinics", "NGOs", "Healthcare Providers"],
+
+    faq: [
+      {
+        question: "Who is this healthcare advisory service designed for?",
+        answer:
+          "This service is designed for hospitals, clinics, healthcare providers, NGOs and other organisations seeking to improve their administration, operations and service delivery.",
+      },
+      {
+        question:
+          "Can you help improve our healthcare administrative processes?",
+        answer:
+          "Yes. We review existing administrative processes, identify inefficiencies and recommend practical improvements to documentation, coordination and daily operations.",
+      },
+      {
+        question: "Do you provide healthcare compliance support?",
+        answer:
+          "Yes. We provide general compliance guidance and help organisations strengthen the administrative systems used to support their regulatory responsibilities.",
+      },
+      {
+        question: "Can the advisory service be delivered remotely?",
+        answer:
+          "Yes. Consultations, assessments and ongoing advisory support can be provided remotely or in person, depending on the organisation's requirements.",
+      },
+      {
+        question: "Is the service suitable for small clinics?",
+        answer:
+          "Yes. The service can be tailored to organisations of different sizes, including independent clinics, growing healthcare providers and larger institutions.",
+      },
     ],
-
-    faqs: [],
   },
-
-
-
-  {
-  title: "Healthcare Advisory & Support",
-
-  badge: "Healthcare",
-
-  icon: "HeartPulse",
-
-  accent: "red",
-
-  price: 5000,
-
-  duration: "",
-
-  featured: false,
-
-  active: true,
-
-  shortDescription:
-    "Supporting healthcare organisations with operational excellence and administrative improvement.",
-
-  overview:
-    "Healthcare organisations require efficient administration, sound operational processes and effective support systems. Our advisory services help improve service delivery and organisational performance.",
-
-  challenges: [
-    "Operational inefficiencies",
-    "Administrative workload",
-    "Compliance challenges",
-    "Service delivery issues",
-  ],
-
-  included: [
-    "Healthcare Administration",
-    "Operational Reviews",
-    "Compliance Guidance",
-    "Service Improvement",
-    "Workflow Optimisation",
-  ],
-
-  benefits: [
-    "Improved healthcare administration",
-    "More efficient operational workflows",
-    "Stronger compliance processes",
-    "Better service delivery",
-    "Reduced administrative workload",
-  ],
-
-  outcomes: [
-    {
-      title: "Improved Operational Efficiency",
-      description:
-        "Streamline workflows and optimise resources to improve day-to-day performance.",
-      icon: "Activity",
-    },
-    {
-      title: "Better Strategic Decisions",
-      description:
-        "Support leadership with practical insights for confident decision-making.",
-      icon: "Lightbulb",
-    },
-    {
-      title: "Sustainable Growth",
-      description:
-        "Create a strong foundation for long-term organisational success.",
-      icon: "TrendingUp",
-    },
-    {
-      title: "Enhanced Business Performance",
-      description:
-        "Improve operational effectiveness and overall organisational outcomes.",
-      icon: "Gauge",
-    },
-  ],
-
-  industries: [
-    "Hospitals",
-    "Clinics",
-    "NGOs",
-    "Healthcare Providers",
-  ],
-
-  faq: [
-  {
-    question:
-      "Who is this healthcare advisory service designed for?",
-    answer:
-      "This service is designed for hospitals, clinics, healthcare providers, NGOs and other organisations seeking to improve their administration, operations and service delivery.",
-  },
-  {
-    question:
-      "Can you help improve our healthcare administrative processes?",
-    answer:
-      "Yes. We review existing administrative processes, identify inefficiencies and recommend practical improvements to documentation, coordination and daily operations.",
-  },
-  {
-    question:
-      "Do you provide healthcare compliance support?",
-    answer:
-      "Yes. We provide general compliance guidance and help organisations strengthen the administrative systems used to support their regulatory responsibilities.",
-  },
-  {
-    question:
-      "Can the advisory service be delivered remotely?",
-    answer:
-      "Yes. Consultations, assessments and ongoing advisory support can be provided remotely or in person, depending on the organisation's requirements.",
-  },
-  {
-    question:
-      "Is the service suitable for small clinics?",
-    answer:
-      "Yes. The service can be tailored to organisations of different sizes, including independent clinics, growing healthcare providers and larger institutions.",
-  },
-]
-}
 ];
+
+// Keep only complete, routable records. An older draft record is retained in
+// this seed file for reference but must never appear in the public catalogue.
+export const services = serviceCatalog.filter(
+  (service) => service.id && service.slug,
+);
 
 export default services;

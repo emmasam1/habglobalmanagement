@@ -59,13 +59,13 @@ export default function AboutPreview() {
 
               <div className="relative overflow-hidden rounded-[32px] border border-white/20 shadow-[0_40px_120px_rgba(0,0,0,.15)]">
                 <Image
-  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
-  alt="Business Meeting"
-  width={600}
-  height={700}
-  className="h-full w-full rounded-[32px] object-cover"
-  priority
-/>
+                  src="/Administrative_Services.jpg"
+                  alt="Business administration and planning"
+                  width={600}
+                  height={700}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-full w-full rounded-[32px] object-cover"
+                />
               </div>
 
               {/* Floating Card */}
@@ -79,7 +79,7 @@ export default function AboutPreview() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -bottom-8 -left-8 max-w-xs rounded-3xl border border-white/20 bg-background/80 p-6 shadow-2xl backdrop-blur-xl"
+                className="absolute -bottom-8 -left-8 max-w-xs rounded-3xl border border-border bg-background/80 p-6 shadow-2xl backdrop-blur-xl"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-secondary/20">

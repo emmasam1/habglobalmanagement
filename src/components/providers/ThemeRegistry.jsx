@@ -4,12 +4,13 @@ import { ConfigProvider, theme } from "antd";
 import { useEffect, useState } from "react";
 
 export default function ThemeRegistry({ children }) {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-color-scheme: dark)");
-
-    setIsDark(media.matches);
 
     const listener = (e) => setIsDark(e.matches);
 

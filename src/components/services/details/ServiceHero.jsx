@@ -87,7 +87,9 @@ export default function ServiceHero({
             href={`/services/request?service=${service.slug}`}
             icon={<ArrowRight size={18}/>}
           >
-            Request This Service
+            {Number(service.price) > 0
+              ? "Request This Service"
+              : "Get a Free Quote"}
           </PrimaryButton>
 
         </div>

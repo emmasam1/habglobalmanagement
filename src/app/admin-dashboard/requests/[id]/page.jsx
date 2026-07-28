@@ -4,7 +4,13 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { message } from "antd";
-import { ArrowLeft, ExternalLink, Mail, Phone } from "lucide-react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Mail,
+  Phone,
+  Send,
+} from "lucide-react";
 
 import requestApi from "@/api/requestApi";
 import AdminPageHeader from "@/components/admin/dashboard/AdminPageHeader";
@@ -24,6 +30,8 @@ export default function RequestDetailsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
+  const [quotePrice, setQuotePrice] = useState("");
+  const [paymentLink, setPaymentLink] = useState("");
 
   const loadRequest = useCallback(async () => {
     try {
@@ -36,6 +44,11 @@ export default function RequestDetailsPage() {
       }
 
       setRequest(response.data);
+      setQuotePrice(
+        response.data.agreedPrice
+          ? String(response.data.agreedPrice)
+          : "",
+      );
     } catch (requestError) {
       setError(
         requestError?.response?.data?.message ||
@@ -71,6 +84,46 @@ export default function RequestDetailsPage() {
         statusError?.response?.data?.message ||
           statusError?.message ||
           "Unable to update the status.",
+      );
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const sendQuotePaymentLink = async () => {
+    const agreedPrice = Number(quotePrice);
+
+    if (!Number.isFinite(agreedPrice) || agreedPrice <= 0) {
+      message.error("Enter the agreed price before sending the link.");
+      return;
+    }
+
+    try {
+      setSaving(true);
+      const response = await requestApi.sendQuotePaymentLink(
+        id,
+        agreedPrice,
+      );
+
+      if (!response?.success) {
+        throw new Error(
+          response?.message || "Unable to send the payment link.",
+        );
+      }
+
+      setRequest((current) => ({
+        ...current,
+        ...(response.data || {}),
+      }));
+      setPaymentLink(response.url || "");
+      message.success(
+        response.message || "Payment link emailed to the customer.",
+      );
+    } catch (quoteError) {
+      message.error(
+        quoteError?.response?.data?.message ||
+          quoteError?.message ||
+          "Unable to send the payment link.",
       );
     } finally {
       setSaving(false);
@@ -164,7 +217,13 @@ export default function RequestDetailsPage() {
               <DetailsGrid
                 items={[
                   ["Service", request.serviceTitle || request.serviceSlug],
-                  ["Amount", formatMoney(request.amount || request.servicePrice)],
+                  [
+                    "Amount",
+                    request.amount
+                      ? formatMoney(request.amount)
+                      : "Quote required",
+                  ],
+                  ["Quote status", request.quoteStatus],
                   ["Invoice", request.invoiceNumber],
                   ["Payment", request.paymentStatus],
                   ["Stripe session", request.stripeSessionId],
@@ -187,6 +246,67 @@ export default function RequestDetailsPage() {
                   )}
                 </div>
               )}
+
+              {(request.pricingMode === "quote" ||
+                !(Number(request.servicePrice) > 0)) &&
+                request.paymentStatus !== "Paid" && (
+                  <div className="border-t border-border p-5 sm:p-6">
+                    <label
+                      htmlFor="agreed-price"
+                      className="text-sm font-bold text-text-primary"
+                    >
+                      Agreed price (GBP)
+                    </label>
+                    <p className="mt-1 text-sm leading-6 text-text-secondary">
+                      Enter the price agreed with the customer. The server will
+                      create Stripe Checkout for this exact amount and email
+                      the secure link.
+                    </p>
+                    <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                      <input
+                        id="agreed-price"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        value={quotePrice}
+                        onChange={(event) =>
+                          setQuotePrice(event.target.value)
+                        }
+                        placeholder="Agreed amount"
+                        className="h-11 min-w-0 flex-1 rounded-xl border border-border bg-surface-secondary px-4 text-text-primary outline-none focus:border-secondary"
+                      />
+                      <button
+                        type="button"
+                        disabled={saving}
+                        onClick={sendQuotePaymentLink}
+                        className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-secondary px-5 text-sm font-semibold text-primary transition hover:opacity-90 disabled:opacity-50"
+                      >
+                        <Send size={17} />
+                        {request.quoteSentAt
+                          ? "Update & resend link"
+                          : "Save & email payment link"}
+                      </button>
+                    </div>
+
+                    {request.quoteSentAt && (
+                      <p className="mt-3 text-sm text-success">
+                        Last emailed {formatDate(request.quoteSentAt)}
+                      </p>
+                    )}
+
+                    {paymentLink && (
+                      <a
+                        href={paymentLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-secondary hover:underline"
+                      >
+                        Preview generated Stripe link
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+                  </div>
+                )}
             </DashboardPanel>
 
             <DashboardPanel title="Contact customer">

@@ -255,7 +255,9 @@ export default function FeaturedService() {
                   )}`}
                   className="inline-flex items-center justify-center rounded-full border border-border px-8 py-4 font-semibold text-text-primary transition hover:border-secondary hover:text-secondary"
                 >
-                  Request Service
+                  {hasFixedPrice(service.price)
+                    ? "Request Service"
+                    : "Get a Free Quote"}
                 </Link>
               </div>
             </div>
@@ -407,8 +409,8 @@ function getOutcomeTitle(outcome) {
 function formatPrice(value) {
   const price = Number(value);
 
-  if (!Number.isFinite(price)) {
-    return "Price on request";
+  if (!Number.isFinite(price) || price <= 0) {
+    return "Free quote";
   }
 
   return new Intl.NumberFormat("en-GB", {
@@ -416,4 +418,8 @@ function formatPrice(value) {
     currency: "GBP",
     maximumFractionDigits: 2,
   }).format(price);
+}
+
+function hasFixedPrice(value) {
+  return Number.isFinite(Number(value)) && Number(value) > 0;
 }

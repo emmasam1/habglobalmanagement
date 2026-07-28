@@ -13,6 +13,7 @@ import Section from "@/components/layout/Section";
 import BackgroundGlow from "@/components/ui/BackgroundGlow";
 import PremiumSectionHeading from "@/components/ui/PremiumSectionHeading";
 import PremiumCard from "@/components/ui/PremiumCard";
+import { getServiceIcon } from "@/lib/serviceIcons";
 
 const process = [
   {
@@ -52,7 +53,28 @@ const process = [
   },
 ];
 
-export default function OurProcess() {
+export default function OurProcess({ service }) {
+  const serviceProcess =
+    Array.isArray(service?.process) &&
+    service.process.length
+      ? service.process.map((step, index) => ({
+          number: String(index + 1).padStart(2, "0"),
+          icon: getServiceIcon(
+            typeof step === "string"
+              ? "CircleCheckBig"
+              : step?.icon,
+          ),
+          title:
+            typeof step === "string"
+              ? step
+              : step?.title,
+          description:
+            typeof step === "string"
+              ? ""
+              : step?.description,
+        }))
+      : process;
+
   return (
     <Section className="relative overflow-hidden py-28 lg:py-36">
       <BackgroundGlow />
@@ -74,9 +96,17 @@ export default function OurProcess() {
 
           <div className="absolute left-0 right-0 top-16 hidden h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent lg:block" />
 
-          <div className="grid gap-8 lg:grid-cols-5">
+          <div
+            className={`grid gap-8 ${
+              serviceProcess.length >= 5
+                ? "lg:grid-cols-5"
+                : serviceProcess.length === 4
+                  ? "lg:grid-cols-4"
+                  : "md:grid-cols-2 lg:grid-cols-3"
+            }`}
+          >
 
-            {process.map((step, index) => {
+            {serviceProcess.map((step, index) => {
 
               const Icon = step.icon;
 
@@ -114,9 +144,11 @@ export default function OurProcess() {
                       {step.title}
                     </h3>
 
-                    <p className="mt-5 leading-8 text-text-secondary text-sm">
-                      {step.description}
-                    </p>
+                    {step.description && (
+                      <p className="mt-5 text-sm leading-8 text-text-secondary">
+                        {step.description}
+                      </p>
+                    )}
 
                   </PremiumCard>
                 </motion.div>

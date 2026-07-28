@@ -1,7 +1,4 @@
-"use client";
-
 import { Sparkles } from "lucide-react";
-import Link from "next/link";
 
 import AnimatedText from "../ui/AnimatedText";
 import AnimatedSection from "../ui/AnimatedSection";
@@ -32,7 +29,7 @@ export default function HeroContent() {
         <p className="text-lg leading-8 text-text-secondary">
           HAB GLOBAL MANAGEMENT LTD delivers professional consultancy, strategic
           planning, and business solutions designed to create lasting success,
-          achieve sustainable growth and measurable result.
+          achieve sustainable growth and measurable results.
         </p>
       </AnimatedSection>
 

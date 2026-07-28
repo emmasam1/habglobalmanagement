@@ -20,6 +20,8 @@ import {
 import Section from "@/components/layout/Section";
 import BackgroundGlow from "@/components/ui/BackgroundGlow";
 import PremiumSectionHeading from "@/components/ui/PremiumSectionHeading";
+import requestApi from "@/api/requestApi";
+import serviceApi from "@/api/serviceApi";
 
 const { TextArea } = Input;
 
@@ -38,17 +40,40 @@ export default function ContactForm() {
     try {
       setLoading(true);
 
-      console.log(values);
-
-      // API HERE
-
-      message.success(
-        "Your message has been sent successfully."
+      const serviceResponse = await serviceApi.getServices({ limit: 100 });
+      const availableServices = Array.isArray(serviceResponse?.data)
+        ? serviceResponse.data
+        : Array.isArray(serviceResponse)
+          ? serviceResponse
+          : [];
+      const selectedService = availableServices.find(
+        (service) => service.title === values.service,
       );
 
-    } catch {
+      if (!selectedService?._id) {
+        throw new Error(
+          "That service is temporarily unavailable. Please email us directly.",
+        );
+      }
+
+      await requestApi.createRequest({
+        service: selectedService._id,
+        fullName: values.name.trim(),
+        email: values.email.trim(),
+        phone: values.phone?.trim() || "",
+        company: values.company?.trim() || "",
+        project: values.message.trim(),
+        message: values.message.trim(),
+      });
+
+      message.success(
+        "Thank you. Your enquiry has been received and we will respond within one business day.",
+      );
+    } catch (submissionError) {
       message.error(
-        "Unable to send your message."
+        submissionError?.response?.data?.message ||
+          submissionError?.message ||
+          "We could not send your enquiry. Please email info@habglobalmanagement.co.uk.",
       );
     } finally {
       setLoading(false);
@@ -191,6 +216,12 @@ export default function ContactForm() {
             <Form.Item
               label="Service"
               name="service"
+              rules={[
+                {
+                  required: true,
+                  message: "Select the service you are interested in",
+                },
+              ]}
             >
               <Select
                 size="large"
@@ -208,6 +239,7 @@ export default function ContactForm() {
               rules={[
                 {
                   required: true,
+                  message: "Tell us briefly how we can help",
                 },
               ]}
             >
@@ -223,10 +255,21 @@ export default function ContactForm() {
               loading={loading}
               size="large"
               icon={<Send size={18} />}
-              className="h-14 rounded-full bg-secondary px-10 font-semibold text-black hover:!bg-secondary"
+              className="h-14 rounded-full bg-secondary px-10 font-semibold text-primary hover:!bg-secondary"
             >
               Send Message
             </Button>
+
+            <p className="mt-5 text-sm leading-6 text-text-secondary">
+              Prefer email? Write to{" "}
+              <a
+                className="font-semibold text-secondary hover:underline"
+                href="mailto:info@habglobalmanagement.co.uk"
+              >
+                info@habglobalmanagement.co.uk
+              </a>
+              .
+            </p>
 
           </Form>
 

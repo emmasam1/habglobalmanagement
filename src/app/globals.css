@@ -4,8 +4,8 @@
   color-scheme: light;
 
   /* Fonts */
-  --font-sans: "Geist Sans", sans-serif;
-  --font-heading: "Geist Sans", sans-serif;
+  --font-sans: var(--font-body), Arial, sans-serif;
+  --font-heading: var(--font-poppins), Arial, sans-serif;
 
   /* Backgrounds */
   --background: #f8fafc;
@@ -23,7 +23,7 @@
 
   /* Text */
   --text-primary: #111827;
-  --text-secondary: #6b7280;
+  --text-secondary: #4b5563;
   --text-light: #ffffff;
 
   /* Status */
@@ -92,6 +92,21 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {

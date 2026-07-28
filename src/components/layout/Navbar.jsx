@@ -38,8 +38,8 @@ export default function Navbar() {
         transition={{ duration: 0.6 }}
         className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? "bg-background/90 shadow-lg backdrop-blur-xl"
-            : "bg-transparent"
+            ? "border-b border-border/70 bg-background/95 shadow-lg backdrop-blur-xl"
+            : "border-b border-border/40 bg-background/75 backdrop-blur-md"
         }`}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
@@ -59,6 +59,7 @@ export default function Navbar() {
                 height={64}
                 priority
                 className="h-auto w-50"
+                style={{ height: "auto" }}
               />
             </picture>
           </Link>

@@ -38,6 +38,9 @@ export default function StepFour({
 
   const service =
     data.serviceData || loadedService;
+  const fixedPrice =
+    Number.isFinite(Number(service?.price)) &&
+    Number(service?.price) > 0;
 
   useEffect(() => {
     if (
@@ -145,6 +148,14 @@ export default function StepFour({
         throw new Error(
           "The consultation request was created without an ID.",
         );
+      }
+
+      if (!fixedPrice) {
+        next({
+          requestId,
+          quoteRequired: true,
+        });
+        return;
       }
 
       const paymentResponse =
@@ -362,8 +373,12 @@ export default function StepFour({
               }
             >
               {submitting
-                ? "Preparing checkout..."
-                : "Continue to Payment"}
+                ? fixedPrice
+                  ? "Preparing checkout..."
+                  : "Sending request..."
+                : fixedPrice
+                  ? "Continue to Payment"
+                  : "Request Free Quote"}
             </PrimaryButton>
           </div>
         </div>
@@ -435,8 +450,8 @@ function SummaryItem({ label, value }) {
 function formatPrice(value) {
   const price = Number(value);
 
-  if (!Number.isFinite(price)) {
-    return "Price unavailable";
+  if (!Number.isFinite(price) || price <= 0) {
+    return "Free quote required";
   }
 
   return new Intl.NumberFormat("en-GB", {

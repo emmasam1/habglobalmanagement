@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { motion, useAnimationControls } from "motion/react";
 
 import SectionHeader from "../ui/SectionHeader";
@@ -15,11 +15,7 @@ export default function Industries() {
   const firstControls = useAnimationControls();
   const secondControls = useAnimationControls();
 
-  useEffect(() => {
-    startAnimation();
-  }, []);
-
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     firstControls.start({
       x: ["0%", "-50%"],
       transition: {
@@ -37,12 +33,21 @@ export default function Industries() {
         repeat: Infinity,
       },
     });
-  };
+  }, [firstControls, secondControls]);
 
   const stopAnimation = () => {
     firstControls.stop();
     secondControls.stop();
   };
+
+  useEffect(() => {
+    startAnimation();
+
+    return () => {
+      firstControls.stop();
+      secondControls.stop();
+    };
+  }, [firstControls, secondControls, startAnimation]);
 
   return (
     <section className="section overflow-hidden">

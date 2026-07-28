@@ -36,7 +36,7 @@ export default function RequestStepper({
 
                 ${
                   current >= index
-                    ? "border-secondary bg-secondary text-black"
+                    ? "border-secondary bg-secondary text-primary"
                     : "border-border text-text-secondary"
                 }`}
               >

@@ -54,7 +54,7 @@ border-2
 
 ${
   isActive
-    ? "border-secondary bg-secondary text-white shadow-lg"
+    ? "border-secondary bg-secondary text-primary shadow-lg"
     : "border-border bg-background text-text-secondary"
 }
 

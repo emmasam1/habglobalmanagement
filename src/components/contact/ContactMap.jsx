@@ -104,17 +104,17 @@ export default function ContactMap() {
                 <InfoRow
                   icon={<MapPin size={18} />}
                   title="Office Address"
-                  text="Unit 24–25, The Sovereign Centre High Street Weston-super-Mare BS23 1HL"
+                  text="Unit 24–25, The Sovereign Centre, High Street, Weston-super-Mare, BS23 1HL"
                 />
                 <InfoRow
                   icon={<Phone size={18} />}
                   title="Phone"
-                  text="+44 XXXX XXX XXX"
+                  text="+44 (0)117 244 8224"
                 />
                 <InfoRow
                   icon={<Mail size={18} />}
                   title="Email"
-                  text="info@habglobal.co.uk"
+                  text="info@habglobalmanagement.co.uk"
                 />
                 <InfoRow
                   icon={<Clock3 size={18} />}

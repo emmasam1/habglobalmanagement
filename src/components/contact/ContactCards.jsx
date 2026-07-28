@@ -25,7 +25,7 @@ const contactItems = [
   {
     icon: MapPin,
     title: "Office Location",
-    value: "Unit 24–25, The Sovereign Centre High Street Weston-super-Mare BS23 1HL",
+    value: "Unit 24–25, The Sovereign Centre, High Street, Weston-super-Mare, BS23 1HL",
     description:
       "Serving organisations across the UK and internationally.",
   },
@@ -34,7 +34,7 @@ const contactItems = [
     title: "Business Hours",
     value: "Mon – Fri",
     description:
-      "9:00 AM – 5:00 PM (GMT)",
+      "9:00 AM – 5:00 PM (UK time)",
   },
   {
     icon: MessageCircleMore,

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 
-export default function PaymentSuccessPage() {
+export default function SuccessScreen({ data }) {
   return (
     <main className="flex min-h-screen items-center justify-center bg-background px-5 py-20">
       <section className="w-full max-w-2xl rounded-[36px] border border-border bg-surface p-8 text-center shadow-xl sm:p-12">
@@ -10,17 +10,20 @@ export default function PaymentSuccessPage() {
         </div>
 
         <h1 className="mt-6 text-4xl font-black text-text-primary">
-          Payment received
+          {data?.quoteRequired
+            ? "Quote request received"
+            : "Request received"}
         </h1>
 
         <p className="mt-4 leading-8 text-text-secondary">
-          Thank you. Your payment was submitted successfully and
-          your consultation request has been received.
+          Thank you. Your consultation request has been sent to HAB
+          Global Management.
         </p>
 
         <p className="mt-3 text-text-secondary">
-          Payment confirmation is verified securely by Stripe. We
-          will contact you shortly.
+          {data?.quoteRequired
+            ? "Our team will discuss the requirements with you. Once a price is agreed, we will email you a secure Stripe payment link showing that exact amount."
+            : "We will contact you shortly with the next steps."}
         </p>
 
         <Link

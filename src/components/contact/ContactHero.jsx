@@ -74,10 +74,12 @@ export default function ContactHero() {
           <div className="overflow-hidden rounded-[40px]">
 
             <Image
-              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1400&q=80"
+              src="/Business_Solutions.jpg"
               alt="Business Meeting"
               width={700}
               height={850}
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="h-full w-full object-cover"
             />
 

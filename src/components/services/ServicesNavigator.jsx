@@ -157,15 +157,9 @@ export default function ServicesNavigator() {
                       </p>
 
                       <div className="mt-4 flex flex-wrap items-center gap-4 text-sm">
-                        {service?.price !== undefined && (
-                          <span className="font-bold text-secondary">
-                            {new Intl.NumberFormat("en-GB", {
-                              style: "currency",
-                              currency: "GBP",
-                              maximumFractionDigits: 0,
-                            }).format(Number(service.price) || 0)}
-                          </span>
-                        )}
+                        <span className="font-bold text-secondary">
+                          {formatServicePrice(service?.price)}
+                        </span>
 
                         {service?.duration && (
                           <span className="text-text-secondary">
@@ -186,9 +180,11 @@ export default function ServicesNavigator() {
 
                       <Link
                         href={`/services/request?service=${encodeURIComponent(service.slug)}`}
-                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-secondary px-6 py-3 font-semibold text-black transition hover:scale-105"
+                        className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-secondary px-6 py-3 font-semibold text-primary transition hover:scale-105"
                       >
-                        Request Service
+                        {hasFixedPrice(service?.price)
+                          ? "Request Service"
+                          : "Get a Free Quote"}
                         <ArrowUpRight size={18} />
                       </Link>
                     </div>
@@ -201,4 +197,18 @@ export default function ServicesNavigator() {
       </div>
     </Section>
   );
+}
+
+function hasFixedPrice(value) {
+  return Number.isFinite(Number(value)) && Number(value) > 0;
+}
+
+function formatServicePrice(value) {
+  if (!hasFixedPrice(value)) return "Free quote";
+
+  return new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+    maximumFractionDigits: 0,
+  }).format(Number(value));
 }

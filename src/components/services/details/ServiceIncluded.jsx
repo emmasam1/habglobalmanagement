@@ -6,8 +6,11 @@ import { Check } from "lucide-react";
 import Section from "@/components/layout/Section";
 import BackgroundGlow from "@/components/ui/BackgroundGlow";
 import PremiumSectionHeading from "@/components/ui/PremiumSectionHeading";
+import { getServiceAccent } from "@/lib/serviceAccents";
 
 export default function ServiceIncluded({ service }) {
+  const accent = getServiceAccent(service?.accent);
+
   return (
     <Section className="relative overflow-hidden py-28 lg:py-36">
 
@@ -52,11 +55,11 @@ export default function ServiceIncluded({ service }) {
               >
 
                 <div
-                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${service.accent?.bg}`}
+                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${accent.background}`}
                 >
                   <Check
                     size={18}
-                    className={service.accent?.text}
+                    className={accent.text}
                   />
                 </div>
 

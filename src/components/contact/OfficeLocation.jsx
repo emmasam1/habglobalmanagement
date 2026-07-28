@@ -112,7 +112,7 @@ export default function OfficeLocation() {
               href="https://www.google.com/maps/search/?api=1&query=Unit+24-25+The+Sovereign+Centre+High+Street+Weston-super-Mare+BS23+1HL"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-full bg-secondary px-8 py-4 font-semibold text-black transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center gap-3 rounded-full bg-secondary px-8 py-4 font-semibold text-primary transition-all duration-300 hover:scale-105"
             >
               Get Directions
 

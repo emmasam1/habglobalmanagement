@@ -15,7 +15,7 @@ export const process = [
       "Every successful partnership begins with understanding your business. We take the time to learn about your goals, challenges and vision before recommending the most effective approach.",
 
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+      "/Business_Solutions.jpg",
   },
 
   {
@@ -27,7 +27,7 @@ export const process = [
       "Our team develops a practical and results-driven strategy tailored specifically to your organisation. Every recommendation is aligned with your business objectives.",
 
     image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+      "/Administrative_Services.jpg",
   },
 
   {
@@ -39,7 +39,7 @@ export const process = [
       "We convert strategy into action with clarity, openness and continuous participation throughout every project lifecycle.",
 
     image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+      "/perational_Improvement.jpg",
   },
 
   {
@@ -51,6 +51,6 @@ export const process = [
       "Our relationship doesn't end when the project is complete. We continue to provide guidance, optimisation and ongoing support as your business grows.",
 
     image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
+      "/Compliance_Support.jpg",
   },
 ];

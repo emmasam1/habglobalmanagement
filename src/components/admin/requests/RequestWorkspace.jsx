@@ -440,7 +440,7 @@ function InvoicesTable({ requests }) {
               <Cell>{request.fullName}</Cell>
               <Cell>{request.serviceTitle}</Cell>
               <Cell>
-                {formatMoney(request.amount)}
+                {formatRequestAmount(request)}
               </Cell>
               <Cell>
                 <AdminStatusBadge
@@ -511,7 +511,7 @@ function PaymentsTable({ requests }) {
               </Cell>
               <Cell>{request.invoiceNumber}</Cell>
               <Cell>
-                {formatMoney(request.amount)}
+                {formatRequestAmount(request)}
               </Cell>
               <Cell>
                 <AdminStatusBadge
@@ -722,6 +722,12 @@ export function formatMoney(value) {
     style: "currency",
     currency: "GBP",
   }).format(Number(value) || 0);
+}
+
+function formatRequestAmount(request) {
+  return Number(request?.amount) > 0
+    ? formatMoney(request.amount)
+    : "Quote required";
 }
 
 export function formatDate(value) {

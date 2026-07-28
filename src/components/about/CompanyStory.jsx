@@ -44,10 +44,11 @@ export default function CompanyStory() {
           className="relative mt-20 overflow-hidden rounded-2xl"
         >
           <Image
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80"
+            src="/Business_Solutions.jpg"
             alt="Business Meeting"
             width={1800}
             height={1100}
+            sizes="(max-width: 1280px) 100vw, 1280px"
             className="h-[260px] w-full object-cover md:h-[420px] lg:h-[560px]"
           />
         </motion.div>

@@ -49,8 +49,6 @@ export default function ServicesPage() {
           search: debouncedSearch,
         });
 
-        console.log(response)
-
       if (!response?.success) {
         throw new Error(
           response?.message ||

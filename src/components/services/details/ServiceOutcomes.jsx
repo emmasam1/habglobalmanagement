@@ -12,6 +12,8 @@ import Section from "@/components/layout/Section";
 import BackgroundGlow from "@/components/ui/BackgroundGlow";
 import PremiumSectionHeading from "@/components/ui/PremiumSectionHeading";
 import PremiumCard from "@/components/ui/PremiumCard";
+import { getServiceAccent } from "@/lib/serviceAccents";
+import { getServiceIcon } from "@/lib/serviceIcons";
 
 const icons = [
   TrendingUp,
@@ -21,6 +23,8 @@ const icons = [
 ];
 
 export default function ServiceOutcomes({ service }) {
+  const accent = getServiceAccent(service?.accent);
+
   return (
     <Section className="relative overflow-hidden py-28 lg:py-36">
 
@@ -43,7 +47,9 @@ export default function ServiceOutcomes({ service }) {
 
           {service.outcomes.map((outcome, index) => {
 
-            const Icon = icons[index % icons.length];
+            const Icon = outcome?.icon
+              ? getServiceIcon(outcome.icon)
+              : icons[index % icons.length];
 
             return (
 
@@ -70,13 +76,13 @@ export default function ServiceOutcomes({ service }) {
                   {/* Hover Glow */}
 
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${service.accent?.bg} opacity-0 transition duration-500 group-hover:opacity-100`}
+                    className={`absolute inset-0 ${accent.background} opacity-0 transition duration-500 group-hover:opacity-100`}
                   />
 
                   <div className="relative">
 
                     <div
-                      className={`flex h-16 w-16 items-center justify-center rounded-2xl ${service.accent?.bg} ${service.accent?.text}`}
+                      className={`flex h-16 w-16 items-center justify-center rounded-2xl ${accent.background} ${accent.text}`}
                     >
                       <Icon size={30} />
                     </div>
