@@ -140,6 +140,16 @@ export default function ContactForm() {
                     required: true,
                     message: "Enter your full name",
                   },
+                  {
+                    validator: (_, value) =>
+                      value?.trim().length >= 2
+                        ? Promise.resolve()
+                        : Promise.reject(
+                            new Error(
+                              "Enter at least 2 characters",
+                            ),
+                          ),
+                  },
                 ]}
               >
                 <Input
@@ -197,6 +207,16 @@ export default function ContactForm() {
                 {
                   required: true,
                   message: "Tell us briefly how we can help",
+                },
+                {
+                  validator: (_, value) =>
+                    value?.trim().length >= 10
+                      ? Promise.resolve()
+                      : Promise.reject(
+                          new Error(
+                            "Your message must contain at least 10 characters",
+                          ),
+                        ),
                 },
               ]}
             >
