@@ -23,7 +23,7 @@ export const metadata = {
     template: "%s | HAB Global Management",
   },
   description:
-    "UK business and management consultancy providing strategic, administrative, compliance, operational and healthcare advisory services.",
+    "UK management consultancy in Weston-super-Mare providing business strategy, operational improvement, administrative, compliance and healthcare advisory support.",
   applicationName: "HAB Global Management",
   authors: [{ name: "HAB Global Management Ltd", url: siteUrl }],
   creator: "HAB Global Management Ltd",
@@ -36,9 +36,25 @@ export const metadata = {
     "administrative support",
     "compliance support",
     "healthcare advisory",
+    "business consultant Weston-super-Mare",
+    "management consultant South West England",
+    "business process improvement UK",
+    "small business consulting UK",
+    "business growth consultant",
+    "governance and policy support",
   ],
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: "/",
+    languages: {
+      "en-GB": "/",
+      "x-default": "/",
+    },
   },
   openGraph: {
     type: "website",
@@ -91,19 +107,76 @@ export default function RootLayout({ children }) {
     logo: `${siteUrl}/hab_logo_light.png`,
     image: `${siteUrl}/hab-social-preview.jpg`,
     email: "info@habglobalmanagement.co.uk",
+    telephone: "+44 117 244 8224",
+    priceRange: "££",
     description:
-      "UK business and management consultancy providing strategic, administrative, compliance, operational and healthcare advisory services.",
-    areaServed: {
-      "@type": "Country",
-      name: "United Kingdom",
+      "UK management consultancy helping organisations improve strategy, administration, governance, compliance and operational performance.",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress:
+        "Unit 24-25, The Sovereign Centre, High Street",
+      addressLocality: "Weston-super-Mare",
+      postalCode: "BS23 1HL",
+      addressCountry: "GB",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 51.3486,
+      longitude: -2.9774,
+    },
+    areaServed: [
+      {
+        "@type": "Country",
+        name: "United Kingdom",
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "South West England",
+      },
+    ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: "info@habglobalmanagement.co.uk",
+        telephone: "+44 117 244 8224",
+        availableLanguage: "English",
+      },
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: "consult@habglobalmanagement.co.uk",
+        availableLanguage: "English",
+      },
+    ],
     knowsAbout: [
       "Business strategy",
       "Management consultancy",
       "Operational improvement",
+      "Business process improvement",
+      "Administrative systems",
       "Compliance support",
+      "Governance and policy development",
       "Healthcare advisory",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Business and management consultancy services",
+      itemListElement: [
+        "Business Solutions",
+        "Administrative Services",
+        "Operational Improvement",
+        "Compliance Support",
+        "Consulting Services",
+        "Healthcare Advisory and Support",
+      ].map((name) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name,
+        },
+      })),
+    },
   };
 
   return (

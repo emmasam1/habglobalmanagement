@@ -35,14 +35,24 @@ import Industries from "@/components/services/Industries";
 import ServicesCTA from "@/components/services/ServicesCTA";
 
 export const metadata = {
-  title: "Business Consultancy Services",
+  title: "Business & Management Consultancy Services UK",
   description:
-    "Explore strategic business solutions, administrative services, compliance support, operational improvement and healthcare advisory from HAB Global Management.",
+    "Explore UK business consultancy services for strategy, operations, administration, compliance, governance and healthcare organisations.",
+  keywords: [
+    "business consultancy services UK",
+    "management consulting services",
+    "business strategy consultant",
+    "operational improvement consultant",
+    "administrative support for businesses",
+    "business compliance support UK",
+    "healthcare management consultancy",
+    "business consultant South West England",
+  ],
   alternates: {
     canonical: "/services",
   },
   openGraph: {
-    title: "Business Consultancy Services",
+    title: "Business & Management Consultancy Services UK",
     description:
       "Practical consultancy and management support designed around your organisation's needs.",
     url: "/services",

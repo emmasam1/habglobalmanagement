@@ -7,9 +7,15 @@ import ContactMapLoader from "@/components/contact/ContactMapLoader";
 import ContactCTA from "@/components/contact/ContactCTA";
 
 export const metadata = {
-  title: "Contact Us",
+  title: "Contact Our Business Consultants",
   description:
-    "Contact HAB Global Management to discuss business strategy, administration, compliance, operational improvement or healthcare advisory support.",
+    "Contact HAB Global Management in Weston-super-Mare for general enquiries or to discuss practical UK business and management consultancy support.",
+  keywords: [
+    "contact business consultant",
+    "business consultant Weston-super-Mare",
+    "management consultancy contact UK",
+    "HAB Global Management contact",
+  ],
   alternates: {
     canonical: "/contact",
   },

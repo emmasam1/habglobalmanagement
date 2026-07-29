@@ -13,9 +13,15 @@ import AboutCTA from "@/components/about/AboutCTA";
 // import CTA from "@/components/cta/CTA";
 
 export const metadata = {
-  title: "About Us",
+  title: "About Our UK Management Consultancy",
   description:
-    "Discover HAB Global Management Ltd, our approach and our commitment to practical, ethical and sustainable business solutions.",
+    "Learn about HAB Global Management, a UK consultancy delivering practical business strategy, operational, administrative and compliance support.",
+  keywords: [
+    "HAB Global Management",
+    "UK management consultancy",
+    "business consultants Weston-super-Mare",
+    "business advisory South West England",
+  ],
   alternates: {
     canonical: "/about",
   },

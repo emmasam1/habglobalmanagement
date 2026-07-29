@@ -31,16 +31,35 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    const description =
+    const rawDescription =
       service.shortDescription ||
       service.overview ||
       `Learn more about ${service.title} from HAB Global Management.`;
+    const description =
+      rawDescription.length > 160
+        ? `${rawDescription.slice(0, 157).trim()}...`
+        : rawDescription;
     const canonical = `/services/${service.slug || slug}`;
     const image = service.heroImage || "/hab-social-preview.jpg";
 
     return {
       title: service.title,
       description,
+      keywords: [
+        `${service.title} UK`,
+        `${service.title} consultant`,
+        ...(Array.isArray(service.included)
+          ? service.included.slice(0, 6)
+          : []),
+        ...(Array.isArray(service.industries)
+          ? service.industries
+              .slice(0, 4)
+              .map(
+                (industry) =>
+                  `${service.title} for ${industry}`,
+              )
+          : []),
+      ],
       alternates: { canonical },
       openGraph: {
         type: "website",
@@ -100,6 +119,15 @@ export default async function ServicePage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: serializeSchema(buildServiceSchema(service)),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeSchema(
+            buildBreadcrumbSchema(service),
+          ),
         }}
       />
 
@@ -184,6 +212,33 @@ function buildFaqSchema(faq) {
         text: item.answer,
       },
     })),
+  };
+}
+
+function buildBreadcrumbSchema(service) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Services",
+        item: `${siteUrl}/services`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.title,
+        item: `${siteUrl}/services/${service.slug}`,
+      },
+    ],
   };
 }
 
