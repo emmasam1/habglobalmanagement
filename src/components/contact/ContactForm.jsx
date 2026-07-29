@@ -237,7 +237,7 @@ export default function ContactForm() {
               Send Message
             </Button>
 
-            <p className="mt-5 text-sm leading-6 text-text-secondary">
+            {/* <p className="mt-5 text-sm leading-6 text-text-secondary">
               Prefer email? Write to{" "}
               <a
                 className="font-semibold text-secondary hover:underline"
@@ -246,7 +246,7 @@ export default function ContactForm() {
                 consult@habglobalmanagement.co.uk
               </a>
               .
-            </p>
+            </p> */}
 
           </Form>
 
