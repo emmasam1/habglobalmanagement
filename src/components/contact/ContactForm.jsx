@@ -4,8 +4,8 @@ import { useState } from "react";
 import {
   Form,
   Input,
-  Select,
   Button,
+  Modal,
   message,
 } from "antd";
 import { motion } from "motion/react";
@@ -15,61 +15,36 @@ import {
   Mail,
   Phone,
   Building2,
+  CircleCheckBig,
 } from "lucide-react";
 
 import Section from "@/components/layout/Section";
 import BackgroundGlow from "@/components/ui/BackgroundGlow";
 import PremiumSectionHeading from "@/components/ui/PremiumSectionHeading";
 import requestApi from "@/api/requestApi";
-import serviceApi from "@/api/serviceApi";
 
 const { TextArea } = Input;
 
-const services = [
-  "Business Solutions",
-  "Administrative Services",
-  "Operational Improvement",
-  "Compliance Support",
-  "Healthcare Advisory & Support",
-  "Consulting Services",
-];
-
 export default function ContactForm() {
+  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [successModalOpen, setSuccessModalOpen] =
+    useState(false);
 
   const onFinish = async (values) => {
     try {
       setLoading(true);
 
-      const serviceResponse = await serviceApi.getServices({ limit: 100 });
-      const availableServices = Array.isArray(serviceResponse?.data)
-        ? serviceResponse.data
-        : Array.isArray(serviceResponse)
-          ? serviceResponse
-          : [];
-      const selectedService = availableServices.find(
-        (service) => service.title === values.service,
-      );
-
-      if (!selectedService?._id) {
-        throw new Error(
-          "That service is temporarily unavailable. Please email us directly.",
-        );
-      }
-
-      await requestApi.createRequest({
-        service: selectedService._id,
+      await requestApi.sendContactMessage({
         fullName: values.name.trim(),
         email: values.email.trim(),
         phone: values.phone?.trim() || "",
         company: values.company?.trim() || "",
-        project: values.message.trim(),
         message: values.message.trim(),
       });
 
-      message.success(
-        "Thank you. Your enquiry has been received and we will respond within one business day.",
-      );
+      form.resetFields();
+      setSuccessModalOpen(true);
     } catch (submissionError) {
       message.error(
         submissionError?.response?.data?.message ||
@@ -150,6 +125,7 @@ export default function ContactForm() {
         >
 
           <Form
+            form={form}
             layout="vertical"
             onFinish={onFinish}
           >
@@ -215,26 +191,6 @@ export default function ContactForm() {
             </div>
 
             <Form.Item
-              label="Service"
-              name="service"
-              rules={[
-                {
-                  required: true,
-                  message: "Select the service you are interested in",
-                },
-              ]}
-            >
-              <Select
-                size="large"
-                placeholder="Select a service"
-                options={services.map((item) => ({
-                  label: item,
-                  value: item,
-                }))}
-              />
-            </Form.Item>
-
-            <Form.Item
               label="Message"
               name="message"
               rules={[
@@ -277,6 +233,48 @@ export default function ContactForm() {
         </motion.div>
 
       </div>
+
+      <Modal
+        open={successModalOpen}
+        onCancel={() => setSuccessModalOpen(false)}
+        footer={null}
+        centered
+        width={500}
+        destroyOnHidden
+        className="hab-success-modal"
+      >
+        <div className="px-2 pb-3 pt-5 text-center sm:px-6">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-secondary/30 bg-secondary/10 text-secondary">
+            <CircleCheckBig
+              aria-hidden="true"
+              size={42}
+              strokeWidth={1.8}
+            />
+          </div>
+
+          <p className="mt-7 text-xs font-bold uppercase tracking-[0.28em] text-secondary">
+            Message Sent
+          </p>
+
+          <h2 className="mt-3 text-2xl font-black text-text-primary sm:text-3xl">
+            Thank you for contacting us
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-sm leading-7 text-text-secondary">
+            Your enquiry has been received. Our team will
+            review it and respond within one business day.
+          </p>
+
+          <Button
+            type="primary"
+            size="large"
+            onClick={() => setSuccessModalOpen(false)}
+            className="mt-8 h-12 rounded-full bg-secondary px-10 font-bold text-primary hover:!bg-secondary"
+          >
+            Done
+          </Button>
+        </div>
+      </Modal>
 
     </Section>
   );
