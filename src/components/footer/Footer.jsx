@@ -122,7 +122,7 @@ export default function Footer() {
               Discuss your goals
             </Link>
             <a
-              href="mailto:info@habglobalmanagement.co.uk"
+              href="mailto:consult@habglobalmanagement.co.uk"
               className="rounded-full border border-white/20 px-7 py-3 font-semibold transition hover:border-secondary hover:text-secondary"
             >
               Email our team
@@ -199,6 +199,12 @@ export default function Footer() {
               icon={<Mail size={18} />}
               text="info@habglobalmanagement.co.uk"
               href="mailto:info@habglobalmanagement.co.uk"
+            />
+
+            <ContactItem
+              icon={<Mail size={18} />}
+              text="consult@habglobalmanagement.co.uk"
+              href="mailto:consult@habglobalmanagement.co.uk"
             />
 
             <ContactItem

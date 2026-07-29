@@ -31,6 +31,7 @@ const services = [
   "Operational Improvement",
   "Compliance Support",
   "Healthcare Advisory & Support",
+  "Consulting Services",
 ];
 
 export default function ContactForm() {
@@ -73,7 +74,7 @@ export default function ContactForm() {
       message.error(
         submissionError?.response?.data?.message ||
           submissionError?.message ||
-          "We could not send your enquiry. Please email info@habglobalmanagement.co.uk.",
+          "We could not send your enquiry. Please email consult@habglobalmanagement.co.uk.",
       );
     } finally {
       setLoading(false);
@@ -264,9 +265,9 @@ export default function ContactForm() {
               Prefer email? Write to{" "}
               <a
                 className="font-semibold text-secondary hover:underline"
-                href="mailto:info@habglobalmanagement.co.uk"
+                href="mailto:consult@habglobalmanagement.co.uk"
               >
-                info@habglobalmanagement.co.uk
+                consult@habglobalmanagement.co.uk
               </a>
               .
             </p>

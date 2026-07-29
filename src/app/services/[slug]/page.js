@@ -8,7 +8,6 @@ import ServiceIncluded from "@/components/services/details/ServiceIncluded";
 import ServiceOutcomes from "@/components/services/details/ServiceOutcomes";
 import ServiceChallenges from "@/components/services/details/ServiceChallenges";
 import ServiceBenefits from "@/components/services/details/ServiceBenefits";
-import OurProcess from "@/components/services/OurProcess";
 import ServiceFAQ from "@/components/services/details/ServiceFAQ";
 import ServiceCTA from "@/components/services/details/ServiceCTA";
 
@@ -127,7 +126,6 @@ export default async function ServicePage({ params }) {
       {hasOutcomes && (
         <ServiceOutcomes service={service} />
       )}
-      <OurProcess service={service} />
       {validFaq.length > 0 && <ServiceFAQ service={service} />}
       <ServiceCTA service={service} />
     </>

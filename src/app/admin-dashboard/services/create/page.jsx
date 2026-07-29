@@ -637,23 +637,6 @@ export default function CreateServicePage({
                 }
               />
 
-              <ObjectListEditor
-                title="Service process"
-                itemName="Process step"
-                items={form.process}
-                defaultItem={{
-                  title: "",
-                  description: "",
-                  icon: "CircleCheckBig",
-                }}
-                onChange={(items) =>
-                  updateField(
-                    "process",
-                    items,
-                  )
-                }
-              />
-
               <StringListEditor
                 title="Industries served"
                 itemName="Industry"
