@@ -71,7 +71,7 @@ export default function ServicesHero() {
           className="mx-auto mt-8 max-w-3xl text-xl leading-9 text-text-secondary"
         >
           From business consulting and corporate strategy to project
-          management and investment advisory, HAB Global Management Ltd
+          management and cash management, HAB Global Management Ltd
           delivers tailored solutions that help organisations grow,
           innovate and succeed.
         </motion.p>
