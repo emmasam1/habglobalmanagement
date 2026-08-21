@@ -8,18 +8,31 @@ import SectionHeader from "../ui/SectionHeader";
 import ServiceCard from "./ServiceCard";
 
 import serviceApi from "@/api/serviceApi";
+import { services as fallbackServices } from "@/data/services";
 
 const HOMEPAGE_SERVICE_LIMIT = 3;
+const HOMEPAGE_REQUEST_TIMEOUT = 10000;
+
+const homepageFallbackServices = fallbackServices
+  .slice(0, HOMEPAGE_SERVICE_LIMIT)
+  .map((service) => ({
+    ...service,
+    _id: `fallback-${service.id}`,
+    description: service.shortDescription,
+  }));
 
 export default function ServicesPreview() {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [services, setServices] = useState(homepageFallbackServices);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const loadServices = async () => {
       try {
         const response = await serviceApi.getServices({
           limit: HOMEPAGE_SERVICE_LIMIT,
+          signal: controller.signal,
+          timeout: HOMEPAGE_REQUEST_TIMEOUT,
         });
 
         const serviceList = Array.isArray(response?.data)
@@ -28,19 +41,21 @@ export default function ServicesPreview() {
             ? response
             : [];
 
-        setServices(
-          serviceList
-            .filter((service) => service?.active !== false)
-            .slice(0, HOMEPAGE_SERVICE_LIMIT),
-        );
-      } catch (error) {
-        console.error("Failed to load services:", error);
-      } finally {
-        setLoading(false);
+        const activeServices = serviceList
+          .filter((service) => service?.active !== false)
+          .slice(0, HOMEPAGE_SERVICE_LIMIT);
+
+        if (activeServices.length > 0) {
+          setServices(activeServices);
+        }
+      } catch {
+        // Keep the bundled catalogue visible when the API is cold or unavailable.
       }
     };
 
     loadServices();
+
+    return () => controller.abort();
   }, []);
 
   return (
@@ -53,11 +68,7 @@ export default function ServicesPreview() {
           description="From strategic consultancy to project delivery, we provide practical solutions that help organisations operate efficiently and achieve sustainable success."
         />
 
-        {loading ? (
-          <div className="mt-14 text-center text-text-secondary">
-            Loading services...
-          </div>
-        ) : services.length === 0 ? (
+        {services.length === 0 ? (
           <div className="mt-14 rounded-3xl border border-border bg-surface p-10 text-center text-text-secondary">
             Our service catalogue is being updated. Please check
             back shortly.

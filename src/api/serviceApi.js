@@ -2,13 +2,17 @@ import api from "@/lib/axios";
 
 const serviceApi = {
   
-  getServices: async ({ page = 1, limit = 9, search = "" } = {}) => {
+  getServices: async (
+    { page = 1, limit = 9, search = "", signal, timeout } = {},
+  ) => {
     const response = await api.get("/services", {
       params: {
         page,
         limit,
         search,
       },
+      signal,
+      ...(timeout ? { timeout } : {}),
     });
 
     return response.data;
